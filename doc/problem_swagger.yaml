@@ -1,0 +1,308 @@
+swagger: '2.0'
+info:
+  description: Api Documentation
+  version: '1.0'
+  title: Api Documentation
+  termsOfService: 'urn:tos'
+  contact: {}
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0'
+host: 'localhost:50112'
+schemes:
+- http
+basePath: /
+tags:
+  - name: project-controller
+    description: Project Controller
+  - name: problem-controller
+    description: Problem Controller
+  - name: sub-problem-controller
+    description: sub Problem Controller
+paths:
+  '/api/problem/{code}':
+    get:
+      tags:
+        - problem-controller
+      summary: code로 문제 조회
+      description: code는 6자리 영문과 숫자조합
+      operationId: getProblemByCodeUsingGET
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: code
+          in: path
+          description: code
+          required: true
+          type: string
+          x-example: abc
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Collection«Problem»'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - problem-controller
+      summary: 문제 생성
+      description: 'code는 6자리 영문과 숫자조합, problem parameter는 사용 X'
+      operationId: saveProblemUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: problem
+          description: problem
+          required: true
+          schema:
+            $ref: '#/definitions/Problem'
+        - name: code
+          in: path
+          description: code
+          required: true
+          type: string
+          x-example: abc
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/api/problem/{code}/all':
+    delete:
+      tags:
+        - problem-controller
+      summary: 'code로 모든 문제 삭제, '
+      description: code는 6자리 영문과 숫자조합
+      operationId: deleteAllProblemUsingDELETE
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: code
+          in: path
+          description: code
+          required: true
+          type: string
+          x-example: abc
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /api/project:
+    post:
+      tags:
+        - project-controller
+      summary: 프로젝트 생성
+      description: 'code는 자동생성, title(String) 필요'
+      operationId: createProjectUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: project
+          description: project
+          required: true
+          schema:
+            $ref: '#/definitions/Project'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/api/project/{code}':
+    get:
+      tags:
+        - project-controller
+      summary: code로 프로젝트 조회
+      description: 'code는 6자리 영문과 숫자조합 '
+      operationId: getProjectUsingGET
+      consumes:
+        - application/json
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - name: code
+          in: path
+          description: code
+          required: true
+          type: string
+          x-example: abc
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+        - project-controller
+      summary: project 업데이트
+      description: 'code로 project 변경, title 필요'
+      operationId: updateProjectUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: code
+          in: path
+          description: code
+          required: true
+          type: string
+          x-example: abc
+        - in: body
+          name: project
+          description: project
+          required: true
+          schema:
+            $ref: '#/definitions/Project'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - project-controller
+      summary: code로 프로젝트 삭제
+      description: code 필요
+      operationId: deleteProjectUsingDELETE
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - name: code
+          in: path
+          description: code
+          required: true
+          type: string
+          x-example: abc
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /api/subproblem:
+    post:
+      tags:
+        - sub-problem-controller
+      summary: saveSubProblem
+      operationId: saveSubProblemUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: problemBody
+          description: problemBody
+          required: true
+          schema:
+            $ref: '#/definitions/subProblemBody'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+definitions:
+  Project:
+    type: object
+    properties:
+      code:
+        type: string
+      idx:
+        type: integer
+        format: int64
+      problem:
+        type: array
+        items:
+          $ref: '#/definitions/Problem'
+      title:
+        type: string
+  Collection«Problem»:
+    type: object
+  Problem:
+    type: object
+    properties:
+      idx:
+        type: integer
+        format: int64
+      problemCode:
+        type: string
+      project:
+        $ref: '#/definitions/Project'
+      title:
+        type: string
+  subProblemBody:
+    type: object
+    properties:
+      content:
+        type: string
+      pro_idx:
+        type: integer
+        format: int64

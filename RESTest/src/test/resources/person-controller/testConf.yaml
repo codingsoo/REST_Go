@@ -1,0 +1,162 @@
+---
+auth:
+  required: true
+  queryParams: {}
+  headerParams: {}
+  apiKeysPath: null
+  headersPath: null
+  oauthPath: null
+testConfiguration:
+  operations:
+  - testPath: /api/person
+    operationId: putPersonUsingPUT
+    method: put
+    testParameters:
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /api/person
+    operationId: postPersonUsingPOST
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/api/person/{id}"
+    operationId: getPersonUsingGET
+    method: get
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/api/person/{id}"
+    operationId: deletePersonUsingDELETE
+    method: delete
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /api/persons
+    operationId: getPersonsUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /api/persons
+    operationId: putPersonUsingPUT_1
+    method: put
+    testParameters:
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /api/persons
+    operationId: postPersonsUsingPOST
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /api/persons
+    operationId: deletePersonsUsingDELETE
+    method: delete
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /api/persons/averageAge
+    operationId: averageAgeUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /api/persons/count
+    operationId: getCountUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: "/api/persons/{ids}"
+    operationId: getPersonsUsingGET_1
+    method: get
+    testParameters:
+    - name: ids
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/api/persons/{ids}"
+    operationId: deletePersonsUsingDELETE_1
+    method: delete
+    testParameters:
+    - name: ids
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200

@@ -1,0 +1,322 @@
+---
+auth:
+  required: true
+  queryParams: {}
+  headerParams: {}
+  apiKeysPath: null
+  headersPath: null
+  oauthPath: null
+testConfiguration:
+  operations:
+  - testPath: /ensembl/canonical-gene/entrez
+    operationId: fetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOST
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/ensembl/canonical-gene/entrez/{entrezGeneId}"
+    operationId: fetchCanonicalEnsemblGeneIdByEntrezGeneIdGET
+    method: get
+    testParameters:
+    - name: entrezGeneId
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /ensembl/canonical-gene/hgnc
+    operationId: fetchCanonicalEnsemblGeneIdByHugoSymbolsPOST
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/ensembl/canonical-gene/hgnc/{hugoSymbol}"
+    operationId: fetchCanonicalEnsemblGeneIdByHugoSymbolGET
+    method: get
+    testParameters:
+    - name: hugoSymbol
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /ensembl/canonical-transcript/hgnc
+    operationId: fetchCanonicalEnsemblTranscriptsByHugoSymbolsPOST
+    method: post
+    testParameters:
+    - name: isoformOverrideSource
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/ensembl/canonical-transcript/hgnc/{hugoSymbol}"
+    operationId: fetchCanonicalEnsemblTranscriptByHugoSymbolGET
+    method: get
+    testParameters:
+    - name: hugoSymbol
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    - name: isoformOverrideSource
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /ensembl/transcript
+    operationId: fetchEnsemblTranscriptsGET
+    method: get
+    testParameters:
+    - name: geneId
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    - name: proteinId
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    - name: hugoSymbol
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /ensembl/transcript
+    operationId: fetchEnsemblTranscriptsByEnsemblFilterPOST
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/ensembl/transcript/{transcriptId}"
+    operationId: fetchEnsemblTranscriptByTranscriptIdGET
+    method: get
+    testParameters:
+    - name: transcriptId
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /ensembl/xrefs
+    operationId: fetchGeneXrefsGET
+    method: get
+    testParameters:
+    - name: accession
+      in: query
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /pdb/header
+    operationId: fetchPdbHeaderPOST
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/pdb/header/{pdbId}"
+    operationId: fetchPdbHeaderGET
+    method: get
+    testParameters:
+    - name: pdbId
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /pfam/domain
+    operationId: fetchPfamDomainsByPfamAccessionPOST
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/pfam/domain/{pfamAccession}"
+    operationId: fetchPfamDomainsByAccessionGET
+    method: get
+    testParameters:
+    - name: pfamAccession
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /ptm/experimental
+    operationId: fetchPostTranslationalModificationsGET
+    method: get
+    testParameters:
+    - name: ensemblTranscriptId
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /ptm/experimental
+    operationId: fetchPostTranslationalModificationsByPtmFilterPOST
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /version
+    operationId: fetchVersionGET
+    method: get
+    testParameters: null
+    expectedResponse: 200

@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group 'io.resttestgen.errortester'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':NominalTester')
+    implementation project(':SwaggerSchema')
+    implementation project(':RequestBuilder')
+    implementation project(':Swagger2DepGraph')
+
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+}

@@ -1,0 +1,401 @@
+---
+auth:
+  required: true
+  queryParams: {}
+  headerParams: {}
+  apiKeysPath: null
+  headersPath: null
+  oauthPath: null
+testConfiguration:
+  operations:
+  - testPath: /error
+    operationId: errorUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /error
+    operationId: errorUsingPUT
+    method: put
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /error
+    operationId: errorUsingPOST
+    method: post
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /error
+    operationId: errorUsingDELETE
+    method: delete
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /login
+    operationId: loginUsingPOST
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /users
+    operationId: getUserPresentationListUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /users
+    operationId: createUserUsingPOST
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /users/rbac/permissions
+    operationId: getPermissionPresentationListUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /users/rbac/roles
+    operationId: getRolePresentationListUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /users/rbac/roles
+    operationId: createRoleUsingPOST
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/users/rbac/roles/{roleId}"
+    operationId: getRoleByIdUsingGET
+    method: get
+    testParameters:
+    - name: roleId
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/users/rbac/roles/{roleId}"
+    operationId: deleteRoleByIdUsingDELETE
+    method: delete
+    testParameters:
+    - name: roleId
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/users/rbac/roles/{roleId}/permissions/{permissionKey}"
+    operationId: addPermissionOnRoleUsingPOST
+    method: post
+    testParameters:
+    - name: permissionKey
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    - name: roleId
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/users/rbac/roles/{roleId}/permissions/{permissionKey}"
+    operationId: removePermissionOnRoleUsingDELETE
+    method: delete
+    testParameters:
+    - name: permissionKey
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    - name: roleId
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /users/register
+    operationId: registerNewUserAccountUsingPOST
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/users/{id}"
+    operationId: getUserByIdUsingGET
+    method: get
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/users/{id}"
+    operationId: updateUserUsingPUT
+    method: put
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/users/{id}"
+    operationId: deleteByIdUsingDELETE
+    method: delete
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/users/{id}/roles/{roleId}"
+    operationId: addRoleUsingPOST
+    method: post
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: roleId
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/users/{id}/roles/{roleId}"
+    operationId: removeRoleUsingDELETE
+    method: delete
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: roleId
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200

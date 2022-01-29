@@ -1,0 +1,1285 @@
+openapi: 3.0.1
+info:
+  title: API for Aktivitetsbanken
+  description: An open API for searching activities suitable for boy scouts and girl
+    guides. The data is mirrored from www.aktivitetsbanken.se.
+  contact:
+    name: /dev/scout
+  version: 1.0 and 2.0
+servers:
+- url: http://localhost:50107/api
+tags:
+- name: activities
+- name: media files
+- name: system messages
+- name: system status
+- name: tags or categories
+- name: users
+- name: user content
+paths:
+  /v2/activities/{id}:
+    get:
+      tags:
+      - activities
+      summary: Read a specific activity
+      operationId: get
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      - name: attrs
+        in: query
+        description: The attributes to include in the response. Comma-separated list.
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+          content: {}
+    delete:
+      tags:
+      - activities
+      summary: Delete an activity
+      operationId: delete
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      responses:
+        default:
+          description: successful operation
+          content: {}
+  /v2/activities:
+    get:
+      tags:
+      - activities
+      summary: Search for activities
+      operationId: all
+      parameters:
+      - name: attrs
+        in: query
+        description: The attributes to include in the response. Comma-separated list.
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Words to look for in activity names. Prefix word with minus character
+          to exclude activities with that word.
+        schema:
+          type: string
+      - name: text
+        in: query
+        description: Words to look for in any text field. Prefix word with minus character
+          to exclude activities with that word.
+        schema:
+          type: string
+      - name: featured
+        in: query
+        description: Show featured (hand-picked by editor) activities
+        schema:
+          type: boolean
+      - name: categories
+        in: query
+        description: Show activites with at least one of the specified tags. Comma-separated
+          list of tag ids.
+        schema:
+          type: string
+      - name: ages
+        in: query
+        description: Find activities suited for certain ages. Comma-separated list
+          of ages.
+        schema:
+          type: string
+      - name: participants
+        in: query
+        description: Find activities suited for certain number of participants.
+        schema:
+          type: string
+      - name: durations
+        in: query
+        description: 'Find activities which can be completed in a certain amount of
+          time. Unit: minutes.'
+        schema:
+          type: string
+      - name: id
+        in: query
+        description: Find specific activites based on their internal identifiers.
+          It is not expected that end-users know these number. Comma-separated list.
+        schema:
+          type: string
+      - name: my_favourites
+        in: query
+        description: Limit result to activities which the current user (as determined
+          by API key) has marked as favourites.
+        schema:
+          type: boolean
+      - name: ratings_count_min
+        in: query
+        description: Show activities which have been rated by at least this many users
+        schema:
+          type: integer
+          format: int64
+      - name: ratings_average_min
+        in: query
+        description: Show activities whose average rating is at this amount.
+        schema:
+          type: number
+          format: double
+      - name: random
+        in: query
+        description: Limit result to a number of random activities matching the other
+          conditions.
+        schema:
+          type: integer
+          format: int32
+      - name: favourites
+        in: query
+        description: Limit result to the overall favourite activities. This means
+          a list of activities sorted by the number of users who have marked them
+          as their favourites. This parameter cannot be used together with any other
+          filtering parameters (meaning that it is not possible to use it to, for
+          example, show favourites for a particular category or age group).
+        schema:
+          type: integer
+          format: int32
+      responses:
+        default:
+          description: successful operation
+          content: {}
+  /v2/activities/{id}/rating:
+    get:
+      tags:
+      - activities
+      summary: Get the end-user's rating the an activity
+      operationId: getRating
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      - name: attrs
+        in: query
+        description: The attributes to include in the response. Comma-separated list.
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+          content: {}
+    post:
+      tags:
+      - activities
+      summary: Set the end-user's rating the an activity
+      operationId: postRating
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/ActivityRatingAttrs'
+        required: false
+      responses:
+        default:
+          description: successful operation
+          content: {}
+      x-codegen-request-body-name: body
+    delete:
+      tags:
+      - activities
+      summary: Remove the end-user's rating the an activity
+      operationId: deleteRating
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      responses:
+        default:
+          description: successful operation
+          content: {}
+  /v1/media_files/{id}:
+    get:
+      tags:
+      - media files
+      operationId: get_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      - name: attrs
+        in: query
+        description: The attributes to include in the response. Comma-separated list.
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+          content: {}
+    put:
+      tags:
+      - media files
+      operationId: update_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/MediaFile'
+        required: false
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaFile'
+      x-codegen-request-body-name: body
+    delete:
+      tags:
+      - media files
+      summary: Delete a media file. By default, deletes even if referenced by activities.
+      operationId: delete_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      - name: verify_unused
+        in: query
+        description: Verify that media file is not referenced by any activities before
+          deleting it.
+        schema:
+          type: boolean
+          default: false
+      responses:
+        default:
+          description: successful operation
+          content: {}
+  /v1/media_files:
+    get:
+      tags:
+      - media files
+      summary: List all media files referenced in activities.
+      operationId: all_1
+      parameters:
+      - name: uri
+        in: query
+        description: Filter media files based on their path. The parameter value may
+          be found anywhere in the URI.Case sensitive.
+        schema:
+          type: string
+      - name: attrs
+        in: query
+        description: The attributes to include in the response. Comma-separated list.
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+          content: {}
+    post:
+      tags:
+      - media files
+      summary: Add a media file to the system. Specify URL of media file or use 'data
+        URI' to upload base64-encoded file.
+      operationId: create_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MediaFile'
+        required: false
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaFile'
+      x-codegen-request-body-name: body
+  /v1/media_files/{id}/file:
+    get:
+      tags:
+      - media files
+      summary: Download media file. Can resize images (but images will never be enlarged).
+      operationId: downloadFile
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      - name: size
+        in: query
+        description: The maximum width/height of returned images. The specified value
+          will be rounded up to the next 'power of 2', e.g. 256, 512, 1024 and so
+          on.
+        schema:
+          type: integer
+          format: int32
+      responses:
+        default:
+          description: successful operation
+          content: {}
+  /v1/system_messages/{id}:
+    get:
+      tags:
+      - system messages
+      operationId: get_2
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      - name: attrs
+        in: query
+        description: The attributes to include in the response. Comma-separated list.
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+          content: {}
+    put:
+      tags:
+      - system messages
+      operationId: update_2
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/SystemMessage'
+        required: false
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemMessage'
+      x-codegen-request-body-name: body
+    delete:
+      tags:
+      - system messages
+      operationId: delete_2
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      responses:
+        default:
+          description: successful operation
+          content: {}
+  /v1/system_messages:
+    get:
+      tags:
+      - system messages
+      operationId: all_2
+      parameters:
+      - name: key
+        in: query
+        schema:
+          type: string
+      - name: valid
+        in: query
+        schema:
+          type: string
+          enum:
+          - now
+          - now_and_future
+      - name: attrs
+        in: query
+        description: The attributes to include in the response. Comma-separated list.
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+          content: {}
+    post:
+      tags:
+      - system messages
+      operationId: create_2
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/SystemMessage'
+        required: false
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemMessage'
+      x-codegen-request-body-name: body
+  /v1/system/roles:
+    get:
+      tags:
+      - system status
+      operationId: roles
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RolesView'
+  /v1/system/ping:
+    get:
+      tags:
+      - system status
+      operationId: ping
+      responses:
+        default:
+          description: successful operation
+          content: {}
+  /v2/tags/{id}:
+    get:
+      tags:
+      - tags or categories
+      operationId: get_3
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      - name: attrs
+        in: query
+        description: The attributes to include in the response. Comma-separated list.
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+          content: {}
+    put:
+      tags:
+      - tags or categories
+      operationId: update_3
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Tag'
+        required: false
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+      x-codegen-request-body-name: body
+    delete:
+      tags:
+      - tags or categories
+      operationId: delete_3
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      responses:
+        default:
+          description: successful operation
+          content: {}
+  /v2/tags:
+    get:
+      tags:
+      - tags or categories
+      operationId: all_3
+      parameters:
+      - name: group
+        in: query
+        description: Returned tags must have this text in their group names.
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Returned tags must have this text in their names.
+        schema:
+          type: string
+      - name: min_activities_count
+        in: query
+        description: Returned tags must have this text in their names.
+        schema:
+          type: integer
+          format: int64
+      - name: attrs
+        in: query
+        description: The attributes to include in the response. Comma-separated list.
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+          content: {}
+    post:
+      tags:
+      - tags or categories
+      operationId: create_3
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Tag'
+        required: false
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+      x-codegen-request-body-name: body
+  /v1/users/{id}:
+    get:
+      tags:
+      - users
+      operationId: get_4
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      - name: attrs
+        in: query
+        description: The attributes to include in the response. Comma-separated list.
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+          content: {}
+    delete:
+      tags:
+      - users
+      operationId: delete_4
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      responses:
+        default:
+          description: successful operation
+          content: {}
+  /v1/users/profile/{id}:
+    get:
+      tags:
+      - users
+      operationId: profile
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfileView'
+  /v1/users:
+    get:
+      tags:
+      - users
+      operationId: all_4
+      parameters:
+      - name: name
+        in: query
+        schema:
+          type: string
+      - name: attrs
+        in: query
+        description: The attributes to include in the response. Comma-separated list.
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+          content: {}
+  /v1/activities/{id}:
+    get:
+      tags:
+      - activities
+      summary: Read a specific activity
+      operationId: get_5
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      - name: attrs
+        in: query
+        description: The attributes to include in the response. Comma-separated list.
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+          content: {}
+    delete:
+      tags:
+      - activities
+      summary: Delete an activity
+      operationId: delete_5
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      responses:
+        default:
+          description: successful operation
+          content: {}
+  /v1/activities:
+    get:
+      tags:
+      - activities
+      summary: Search for activities
+      operationId: all_5
+      parameters:
+      - name: attrs
+        in: query
+        description: The activity attributes to include in the response
+        schema:
+          type: string
+      - name: name
+        in: query
+        schema:
+          type: string
+      - name: text
+        in: query
+        description: Words to look for in any text field. Prefix word with minus character
+          to exclude activities with that word.
+        schema:
+          type: string
+      - name: featured
+        in: query
+        description: Show featured (hand-picked by editor) activities
+        schema:
+          type: boolean
+      - name: categories
+        in: query
+        description: Show activites with at least one of the specified tags. Comma-separated
+          list of category ids.
+        schema:
+          type: string
+      - name: age_1
+        in: query
+        schema:
+          type: string
+      - name: age_2
+        in: query
+        schema:
+          type: string
+      - name: participants
+        in: query
+        description: Find activities suited for certain number of participants.
+        schema:
+          type: string
+      - name: time_1
+        in: query
+        schema:
+          type: string
+      - name: time_2
+        in: query
+        schema:
+          type: string
+      - name: id
+        in: query
+        schema:
+          type: string
+      - name: my_favourites
+        in: query
+        description: Limit result to activities which the current user (as determined
+          by API key) has marked as favourites.
+        schema:
+          type: boolean
+      - name: ratings_count_min
+        in: query
+        description: Show activities which have been rated by at least this many users
+        schema:
+          type: integer
+          format: int64
+      - name: ratings_average_min
+        in: query
+        description: Show activities whose average rating is at this amount.
+        schema:
+          type: number
+          format: double
+      - name: random
+        in: query
+        description: Limit result to a number of random activities matching the other
+          conditions.
+        schema:
+          type: integer
+          format: int32
+      - name: favourites
+        in: query
+        description: Limit result to the overall favourite activities. This means
+          a list of activities sorted by the number of users who have marked them
+          as their favourites. This parameter cannot be used together with any other
+          filtering parameters (meaning that it is not possible to use it to, for
+          example, show favourites for a particular category or age group).
+        schema:
+          type: integer
+          format: int32
+      responses:
+        default:
+          description: successful operation
+          content: {}
+  /v1/activities/{id}/rating:
+    get:
+      tags:
+      - activities
+      summary: Get the end-user's rating the an activity
+      operationId: getRating_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      - name: attrs
+        in: query
+        description: The attributes to include in the response. Comma-separated list.
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+          content: {}
+    post:
+      tags:
+      - activities
+      summary: Set the end-user's rating the an activity
+      operationId: postRating_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/ActivityRatingAttrs'
+        required: false
+      responses:
+        default:
+          description: successful operation
+          content: {}
+      x-codegen-request-body-name: body
+    delete:
+      tags:
+      - activities
+      summary: Remove the end-user's rating the an activity
+      operationId: deleteRating_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      responses:
+        default:
+          description: successful operation
+          content: {}
+  /v1/categories/{id}:
+    get:
+      tags:
+      - tags or categories
+      operationId: get_6
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      - name: attrs
+        in: query
+        description: The attributes to include in the response. Comma-separated list.
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+          content: {}
+    put:
+      tags:
+      - tags or categories
+      operationId: update_6
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Tag'
+        required: false
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+      x-codegen-request-body-name: body
+    delete:
+      tags:
+      - tags or categories
+      operationId: delete_6
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      responses:
+        default:
+          description: successful operation
+          content: {}
+  /v1/categories:
+    get:
+      tags:
+      - tags or categories
+      operationId: all_6
+      parameters:
+      - name: group
+        in: query
+        description: Returned tags must have this text in their group names.
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Returned tags must have this text in their names.
+        schema:
+          type: string
+      - name: min_activities_count
+        in: query
+        description: Returned tags must have this text in their names.
+        schema:
+          type: integer
+          format: int64
+      - name: attrs
+        in: query
+        description: The attributes to include in the response. Comma-separated list.
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+          content: {}
+    post:
+      tags:
+      - tags or categories
+      operationId: create_6
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Tag'
+        required: false
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+      x-codegen-request-body-name: body
+  /v1/favourites/{id}:
+    get:
+      tags:
+      - user content
+      operationId: get_7
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: integer
+                  format: int64
+    post:
+      tags:
+      - user content
+      operationId: put
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/PutFavouritesEntity'
+        required: false
+      responses:
+        default:
+          description: successful operation
+          content: {}
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    Activity:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        properties_revisions:
+          type: array
+          xml:
+            name: propertiesRevisions
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/ActivityProperties'
+        properties:
+          $ref: '#/components/schemas/ActivityProperties'
+        ratings_count:
+          type: integer
+          format: int64
+        ratings_sum:
+          type: integer
+          format: int64
+        favourites_count:
+          type: integer
+          format: int64
+        ratings_average:
+          type: number
+          format: double
+        related:
+          type: array
+          readOnly: true
+          items:
+            type: integer
+            format: int64
+    ActivityProperties:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          maxLength: 100
+          minLength: 0
+          type: string
+        date_published:
+          type: string
+          format: date-time
+        date_created:
+          type: string
+          format: date-time
+        date_updated:
+          type: string
+          format: date-time
+        description_material:
+          maxLength: 20000
+          minLength: 0
+          type: string
+        description_introduction:
+          maxLength: 20000
+          minLength: 0
+          type: string
+        description_prepare:
+          maxLength: 20000
+          minLength: 0
+          type: string
+        description_main:
+          maxLength: 20000
+          minLength: 0
+          type: string
+        description_safety:
+          maxLength: 20000
+          minLength: 0
+          type: string
+        description_notes:
+          maxLength: 20000
+          minLength: 0
+          type: string
+        age_min:
+          maximum: 1E+2
+          type: integer
+          format: int32
+        age_max:
+          maximum: 1E+2
+          type: integer
+          format: int32
+        participants_min:
+          type: integer
+          format: int32
+        participants_max:
+          type: integer
+          format: int32
+        time_min:
+          type: integer
+          format: int32
+        time_max:
+          type: integer
+          format: int32
+        featured:
+          type: boolean
+        source:
+          type: string
+        tags:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/Tag'
+        media_files:
+          type: array
+          xml:
+            name: mediaFiles
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/MediaFile'
+        author:
+          $ref: '#/components/schemas/User'
+        activity:
+          $ref: '#/components/schemas/Activity'
+    MediaFile:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        mime_type:
+          type: string
+        uri:
+          type: string
+        name:
+          type: string
+        capture_date:
+          type: string
+          format: date-time
+        copy_right:
+          type: string
+        author:
+          type: string
+    Tag:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        group:
+          type: string
+        name:
+          type: string
+        media_file:
+          $ref: '#/components/schemas/MediaFile'
+        activities_count:
+          type: integer
+          format: int64
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        email_address:
+          type: string
+        authorization_level:
+          type: integer
+          format: int32
+        identities:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/UserIdentity'
+    UserIdentity:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        date_created:
+          type: string
+          format: date-time
+        type:
+          type: string
+          enum:
+          - API
+          - GOOGLE
+        value:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+    ActivityRatingAttrs:
+      type: object
+      properties:
+        rating:
+          type: integer
+          format: int32
+        favourite:
+          type: boolean
+    SystemMessage:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        key:
+          type: string
+        value:
+          type: string
+        valid_to:
+          type: string
+          format: date-time
+        valid_from:
+          type: string
+          format: date-time
+    RolesView:
+      type: object
+      properties:
+        permission_levels:
+          type: object
+          additionalProperties:
+            type: integer
+            format: int32
+        role_levels:
+          type: object
+          additionalProperties:
+            type: integer
+            format: int32
+    UserProfileView:
+      type: object
+      properties:
+        role_permissions:
+          type: array
+          items:
+            type: string
+        name:
+          type: string
+        role:
+          type: string
+    PutFavouritesEntity:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: integer
+            format: int64

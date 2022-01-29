@@ -1,0 +1,8 @@
+rootProject.name = 'RestTestGen'
+include 'NominalTester'
+include 'ErrorTester'
+include 'Launcher'
+include 'SwaggerSchema'
+include 'Swagger2DepGraph'
+include 'RequestBuilder'
+

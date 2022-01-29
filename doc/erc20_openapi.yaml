@@ -1,0 +1,535 @@
+openapi: 3.0.0
+info:
+  description: ERC-20 token standard RESTful service
+  title: ERC-20 API
+  version: "0.1"
+tags:
+  - name: controller
+    description: Controller
+paths:
+  /config:
+    get:
+      tags:
+        - controller
+      summary: Application configuration
+      operationId: configUsingGET
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: "#/components/schemas/NodeConfiguration"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+  /deploy:
+    post:
+      tags:
+        - controller
+      summary: Deploy new ERC-20 token
+      description: Returns hex encoded contract address
+      operationId: deployUsingPOST
+      parameters:
+        - name: privateFor
+          in: header
+          description: Comma separated list of public keys of enclave nodes that
+            transaction is private for
+          required: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContractSpecification"
+        description: contractSpecification
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: string
+        "201":
+          description: Created
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+  "/{contractAddress}/allowance":
+    get:
+      tags:
+        - controller
+      summary: Get quantity of tokens you can transfer on another token holder's behalf
+      operationId: allowanceUsingGET
+      parameters:
+        - name: contractAddress
+          in: path
+          description: contractAddress
+          required: true
+          example: abc
+          schema:
+            type: string
+        - name: ownerAddress
+          in: query
+          description: ownerAddress
+          required: true
+          example: abc
+          schema:
+            type: string
+        - name: spenderAddress
+          in: query
+          description: spenderAddress
+          required: true
+          example: abc
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: string
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+  "/{contractAddress}/approve":
+    post:
+      tags:
+        - controller
+      summary: Approve transfers by a specific address up to the provided total quantity
+      description: Returns hex encoded transaction hash, and Approval event if called
+      operationId: approveUsingPOST
+      parameters:
+        - name: contractAddress
+          in: path
+          description: contractAddress
+          required: true
+          example: abc
+          schema:
+            type: string
+        - name: privateFor
+          in: header
+          description: Comma separated list of public keys of enclave nodes that
+            transaction is private for
+          required: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApproveRequest"
+        description: approveRequest
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/TransactionResponse_ApprovalEventRespon\
+                  se_"
+        "201":
+          description: Created
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+  "/{contractAddress}/approveAndCall":
+    post:
+      tags:
+        - controller
+      summary: Approve transfers by a specific contract address up to the provided
+        total quantity, and notify that contract address of the approval
+      description: Returns hex encoded transaction hash, and Approval event if called
+      operationId: approveAndCallUsingPOST
+      parameters:
+        - name: contractAddress
+          in: path
+          description: contractAddress
+          required: true
+          example: abc
+          schema:
+            type: string
+        - name: privateFor
+          in: header
+          description: Comma separated list of public keys of enclave nodes that
+            transaction is private for
+          required: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApproveAndCallRequest"
+        description: approveAndCallRequest
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/TransactionResponse_ApprovalEventRespon\
+                  se_"
+        "201":
+          description: Created
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+  "/{contractAddress}/balanceOf/{ownerAddress}":
+    get:
+      tags:
+        - controller
+      summary: Get token balance for address
+      operationId: balanceOfUsingGET
+      parameters:
+        - name: contractAddress
+          in: path
+          description: contractAddress
+          required: true
+          example: abc
+          schema:
+            type: string
+        - name: ownerAddress
+          in: path
+          description: ownerAddress
+          required: true
+          example: abc
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: string
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+  "/{contractAddress}/decimals":
+    get:
+      tags:
+        - controller
+      summary: Get decimal precision of tokens
+      operationId: decimalsUsingGET
+      parameters:
+        - name: contractAddress
+          in: path
+          description: contractAddress
+          required: true
+          example: abc
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: string
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+  "/{contractAddress}/name":
+    get:
+      tags:
+        - controller
+      summary: Get token name
+      operationId: nameUsingGET
+      parameters:
+        - name: contractAddress
+          in: path
+          description: contractAddress
+          required: true
+          example: abc
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: string
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+  "/{contractAddress}/symbol":
+    get:
+      tags:
+        - controller
+      summary: Get token symbol
+      operationId: symbolUsingGET
+      parameters:
+        - name: contractAddress
+          in: path
+          description: contractAddress
+          required: true
+          example: abc
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: string
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+  "/{contractAddress}/totalSupply":
+    get:
+      tags:
+        - controller
+      summary: Get total supply of tokens
+      operationId: totalSupplyUsingGET
+      parameters:
+        - name: contractAddress
+          in: path
+          description: contractAddress
+          required: true
+          example: abc
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: string
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+  "/{contractAddress}/transfer":
+    post:
+      tags:
+        - controller
+      summary: Transfer tokens you own to another address
+      description: Returns hex encoded transaction hash, and Transfer event if called
+      operationId: transferUsingPOST
+      parameters:
+        - name: contractAddress
+          in: path
+          description: contractAddress
+          required: true
+          example: abc
+          schema:
+            type: string
+        - name: privateFor
+          in: header
+          description: Comma separated list of public keys of enclave nodes that
+            transaction is private for
+          required: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransferRequest"
+        description: transferRequest
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/TransactionResponse_TransferEventRespon\
+                  se_"
+        "201":
+          description: Created
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+  "/{contractAddress}/transferFrom":
+    post:
+      tags:
+        - controller
+      summary: Transfer tokens between addresses (must already be approved)
+      description: Returns hex encoded transaction hash, and Transfer event if called
+      operationId: transferFromUsingPOST
+      parameters:
+        - name: contractAddress
+          in: path
+          description: contractAddress
+          required: true
+          example: abc
+          schema:
+            type: string
+        - name: privateFor
+          in: header
+          description: Comma separated list of public keys of enclave nodes that
+            transaction is private for
+          required: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransferFromRequest"
+        description: transferFromRequest
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/TransactionResponse_TransferEventRespon\
+                  se_"
+        "201":
+          description: Created
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+  "/{contractAddress}/version":
+    get:
+      tags:
+        - controller
+      summary: Get contract version
+      operationId: versionUsingGET
+      parameters:
+        - name: contractAddress
+          in: path
+          description: contractAddress
+          required: true
+          example: abc
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: string
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+servers:
+  - url: http://localhost:50109/
+components:
+  schemas:
+    ApprovalEventResponse:
+      type: object
+      properties:
+        owner:
+          type: string
+        spender:
+          type: string
+        value:
+          type: integer
+          format: int64
+    ApproveAndCallRequest:
+      type: object
+    ApproveRequest:
+      type: object
+      properties:
+        spender:
+          type: string
+        value:
+          type: integer
+    ContractSpecification:
+      type: object
+      properties:
+        decimalUnits:
+          type: integer
+        initialAmount:
+          type: integer
+        tokenName:
+          type: string
+        tokenSymbol:
+          type: string
+    NodeConfiguration:
+      type: object
+      properties:
+        fromAddress:
+          type: string
+        nodeEndpoint:
+          type: string
+    TransferEventResponse:
+      type: object
+      properties:
+        from:
+          type: string
+        to:
+          type: string
+        value:
+          type: integer
+          format: int64
+    TransferFromRequest:
+      type: object
+      properties:
+        from:
+          type: string
+        to:
+          type: string
+    TransferRequest:
+      type: object
+      properties:
+        to:
+          type: string
+        value:
+          type: integer
+    TransactionResponse_ApprovalEventResponse_:
+      type: object
+      properties:
+        event:
+          $ref: "#/components/schemas/ApprovalEventResponse"
+        transactionHash:
+          type: string
+    TransactionResponse_TransferEventResponse_:
+      type: object
+      properties:
+        event:
+          $ref: "#/components/schemas/TransferEventResponse"
+        transactionHash:
+          type: string

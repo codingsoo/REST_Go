@@ -1,0 +1,1046 @@
+---
+auth:
+  required: true
+  queryParams: {}
+  headerParams: {}
+  apiKeysPath: null
+  headersPath: null
+  oauthPath: null
+testConfiguration:
+  operations:
+  - testPath: /
+    operationId: indexUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /actuator
+    operationId: linksUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /actuator/beans
+    operationId: handleUsingGET
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /actuator/caches
+    operationId: handleUsingGET_1
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /actuator/caches
+    operationId: handleUsingDELETE
+    method: delete
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /actuator/conditions
+    operationId: handleUsingGET_3
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /actuator/configprops
+    operationId: handleUsingGET_4
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /actuator/env
+    operationId: handleUsingGET_5
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /actuator/health
+    operationId: handleUsingGET_7
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /actuator/health/**
+    operationId: handleUsingGET_8
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /actuator/heapdump
+    operationId: handleUsingGET_9
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /actuator/info
+    operationId: handleUsingGET_10
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /actuator/loggers
+    operationId: handleUsingGET_11
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /actuator/mappings
+    operationId: handleUsingGET_13
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /actuator/metrics
+    operationId: handleUsingGET_14
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /actuator/scheduledtasks
+    operationId: handleUsingGET_16
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /actuator/threaddump
+    operationId: handleUsingGET_17
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /browser
+    operationId: browserUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /error
+    operationId: errorUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /error
+    operationId: errorUsingPUT
+    method: put
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /error
+    operationId: errorUsingPOST
+    method: post
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /error
+    operationId: errorUsingDELETE
+    method: delete
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /filtering
+    operationId: retrieveSomeBeanUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /filtering-list
+    operationId: retrieveListOfSomeBeansUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /hello-world
+    operationId: helloWorldUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /hello-world-bean
+    operationId: helloWorldBeanUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /hello-world-internationalized
+    operationId: helloWorldInternationalizedUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: "/hello-world/path-variable/{name}"
+    operationId: helloWorldPathVariableUsingGET
+    method: get
+    testParameters:
+    - name: name
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /jpa/users
+    operationId: retrieveAllUsersUsingGET_1
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /jpa/users
+    operationId: createUserUsingPOST
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/jpa/users/{id}"
+    operationId: retrieveUserUsingGET
+    method: get
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int32
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/jpa/users/{id}"
+    operationId: deleteUserUsingDELETE_1
+    method: delete
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int32
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/jpa/users/{id}/posts"
+    operationId: retrieveAllUsersUsingGET
+    method: get
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int32
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/jpa/users/{id}/posts"
+    operationId: createPostUsingPOST
+    method: post
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int32
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /person/header
+    operationId: headerV1UsingGET
+    method: get
+    testParameters:
+    - name: X-API-VERSION
+      in: header
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /person/param
+    operationId: paramV1UsingGET
+    method: get
+    testParameters:
+    - name: version
+      in: query
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /person/produces
+    operationId: producesV1UsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /posts
+    operationId: findAllPostUsingGET
+    method: get
+    testParameters:
+    - name: page
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int32
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: size
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int32
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: sort
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /posts
+    operationId: savePostUsingPOST
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/posts/{id}"
+    operationId: findByIdPostUsingGET
+    method: get
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int32
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/posts/{id}"
+    operationId: savePostUsingPUT
+    method: put
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int32
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/posts/{id}"
+    operationId: deletePostUsingDELETE
+    method: delete
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int32
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/posts/{id}/user"
+    operationId: postUserUsingGET
+    method: get
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int32
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/posts/{id}/user"
+    operationId: postUserUsingPUT
+    method: put
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int32
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/posts/{id}/user"
+    operationId: postUserUsingPOST
+    method: post
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int32
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/posts/{id}/user"
+    operationId: postUserUsingDELETE
+    method: delete
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int32
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /profile
+    operationId: listAllFormsOfMetadataUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /users
+    operationId: retrieveAllUsersUsingGET_2
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /users
+    operationId: createUserUsingPOST_1
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/users/{id}"
+    operationId: retrieveUserUsingGET_1
+    method: get
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int32
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/users/{id}"
+    operationId: saveUserUsingPUT
+    method: put
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int32
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/users/{id}"
+    operationId: deleteUserUsingDELETE_2
+    method: delete
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int32
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/users/{id}/posts"
+    operationId: userPostsUsingGET
+    method: get
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int32
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/users/{id}/posts"
+    operationId: userPostsUsingPUT
+    method: put
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int32
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/users/{id}/posts"
+    operationId: userPostsUsingPOST
+    method: post
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int32
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/users/{id}/posts"
+    operationId: userPostsUsingDELETE_1
+    method: delete
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int32
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/users/{id}/posts/{postId}"
+    operationId: userPostsUsingGET_1
+    method: get
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int32
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: postId
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/users/{id}/posts/{postId}"
+    operationId: userPostsUsingDELETE
+    method: delete
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int32
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: postId
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /v1/person
+    operationId: personV1UsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /v2/person
+    operationId: personV2UsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200

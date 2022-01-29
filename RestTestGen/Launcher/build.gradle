@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+}
+
+group 'io.resttestgen'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation files('libs/swagger-codegen-cli.jar')
+
+    implementation project(':NominalTester')
+    implementation project(':ErrorTester')
+    implementation project(':SwaggerSchema')
+
+    implementation 'mysql:mysql-connector-java:8.0.21'
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+}
+
+jar {
+    zip64 true;
+    archiveFileName = 'RestTestGen.jar'
+    destinationDirectory = file("$rootDir")
+
+    manifest {
+        attributes "Main-Class": "io.resttestgen.launcher.cli.App"
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}

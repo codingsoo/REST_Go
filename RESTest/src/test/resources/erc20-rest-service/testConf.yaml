@@ -1,0 +1,344 @@
+---
+auth:
+  required: true
+  queryParams: {}
+  headerParams: {}
+  apiKeysPath: null
+  headersPath: null
+  oauthPath: null
+testConfiguration:
+  operations:
+  - testPath: /config
+    operationId: configUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /deploy
+    operationId: deployUsingPOST
+    method: post
+    testParameters:
+    - name: privateFor
+      in: header
+      weight: 0.5
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/{contractAddress}/allowance"
+    operationId: allowanceUsingGET
+    method: get
+    testParameters:
+    - name: contractAddress
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    - name: ownerAddress
+      in: query
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    - name: spenderAddress
+      in: query
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/{contractAddress}/approve"
+    operationId: approveUsingPOST
+    method: post
+    testParameters:
+    - name: contractAddress
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    - name: privateFor
+      in: header
+      weight: 0.5
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/{contractAddress}/approveAndCall"
+    operationId: approveAndCallUsingPOST
+    method: post
+    testParameters:
+    - name: contractAddress
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    - name: privateFor
+      in: header
+      weight: 0.5
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/{contractAddress}/balanceOf/{ownerAddress}"
+    operationId: balanceOfUsingGET
+    method: get
+    testParameters:
+    - name: contractAddress
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    - name: ownerAddress
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/{contractAddress}/decimals"
+    operationId: decimalsUsingGET
+    method: get
+    testParameters:
+    - name: contractAddress
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/{contractAddress}/name"
+    operationId: nameUsingGET
+    method: get
+    testParameters:
+    - name: contractAddress
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/{contractAddress}/symbol"
+    operationId: symbolUsingGET
+    method: get
+    testParameters:
+    - name: contractAddress
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/{contractAddress}/totalSupply"
+    operationId: totalSupplyUsingGET
+    method: get
+    testParameters:
+    - name: contractAddress
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/{contractAddress}/transfer"
+    operationId: transferUsingPOST
+    method: post
+    testParameters:
+    - name: contractAddress
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    - name: privateFor
+      in: header
+      weight: 0.5
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/{contractAddress}/transferFrom"
+    operationId: transferFromUsingPOST
+    method: post
+    testParameters:
+    - name: contractAddress
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    - name: privateFor
+      in: header
+      weight: 0.5
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/{contractAddress}/version"
+    operationId: versionUsingGET
+    method: get
+    testParameters:
+    - name: contractAddress
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200

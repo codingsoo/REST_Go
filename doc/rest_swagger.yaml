@@ -1,0 +1,2106 @@
+---
+swagger: '2.0'
+info:
+  description: Awesome API Description
+  version: '1.0'
+  title: Awesome API Title
+  termsOfService: urn:tos
+  contact:
+    name: Ranga Karanam
+    url: http://www.in28minutes.com
+    email: in28minutes@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
+host: localhost:50113
+schemes:
+- http
+basePath: "/"
+tags:
+- name: Post Entity
+  description: Post
+- name: User Entity
+  description: User
+- name: basic-error-controller
+  description: Basic Error Controller
+- name: filtering-controller
+  description: Filtering Controller
+- name: hal-browser
+  description: Hal Browser
+- name: hello-world-controller
+  description: Hello World Controller
+- name: operation-handler
+  description: Operation Handler
+- name: person-versioning-controller
+  description: Person Versioning Controller
+- name: profile-controller
+  description: Profile Controller
+- name: user-jpa-resource
+  description: User JPA Resource
+- name: user-resource
+  description: User Resource
+- name: web-mvc-links-handler
+  description: Web Mvc Links Handler
+consumes:
+- application/json
+- application/xml
+produces:
+- application/json
+- application/xml
+paths:
+  "/":
+    get:
+      tags:
+      - hal-browser
+      summary: index
+      operationId: indexUsingGET
+      produces:
+      - text/html
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/View"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/actuator":
+    get:
+      tags:
+      - web-mvc-links-handler
+      summary: links
+      operationId: linksUsingGET
+      produces:
+      - application/json
+      - application/vnd.spring-boot.actuator.v2+json
+      - application/vnd.spring-boot.actuator.v3+json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+              additionalProperties:
+                "$ref": "#/definitions/Link"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/actuator/beans":
+    get:
+      tags:
+      - operation-handler
+      summary: handle
+      operationId: handleUsingGET
+      produces:
+      - application/json
+      - application/vnd.spring-boot.actuator.v2+json
+      - application/vnd.spring-boot.actuator.v3+json
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: false
+        schema:
+          type: object
+          additionalProperties:
+            type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/actuator/caches":
+    get:
+      tags:
+      - operation-handler
+      summary: handle
+      operationId: handleUsingGET_1
+      produces:
+      - application/json
+      - application/vnd.spring-boot.actuator.v2+json
+      - application/vnd.spring-boot.actuator.v3+json
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: false
+        schema:
+          type: object
+          additionalProperties:
+            type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+      - operation-handler
+      summary: handle
+      operationId: handleUsingDELETE
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: false
+        schema:
+          type: object
+          additionalProperties:
+            type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  "/actuator/conditions":
+    get:
+      tags:
+      - operation-handler
+      summary: handle
+      operationId: handleUsingGET_3
+      produces:
+      - application/json
+      - application/vnd.spring-boot.actuator.v2+json
+      - application/vnd.spring-boot.actuator.v3+json
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: false
+        schema:
+          type: object
+          additionalProperties:
+            type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/actuator/configprops":
+    get:
+      tags:
+      - operation-handler
+      summary: handle
+      operationId: handleUsingGET_4
+      produces:
+      - application/json
+      - application/vnd.spring-boot.actuator.v2+json
+      - application/vnd.spring-boot.actuator.v3+json
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: false
+        schema:
+          type: object
+          additionalProperties:
+            type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/actuator/env":
+    get:
+      tags:
+      - operation-handler
+      summary: handle
+      operationId: handleUsingGET_5
+      produces:
+      - application/json
+      - application/vnd.spring-boot.actuator.v2+json
+      - application/vnd.spring-boot.actuator.v3+json
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: false
+        schema:
+          type: object
+          additionalProperties:
+            type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/actuator/health":
+    get:
+      tags:
+      - operation-handler
+      summary: handle
+      operationId: handleUsingGET_7
+      produces:
+      - application/json
+      - application/vnd.spring-boot.actuator.v2+json
+      - application/vnd.spring-boot.actuator.v3+json
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: false
+        schema:
+          type: object
+          additionalProperties:
+            type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/actuator/health/**":
+    get:
+      tags:
+      - operation-handler
+      summary: handle
+      operationId: handleUsingGET_8
+      produces:
+      - application/json
+      - application/vnd.spring-boot.actuator.v2+json
+      - application/vnd.spring-boot.actuator.v3+json
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: false
+        schema:
+          type: object
+          additionalProperties:
+            type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/actuator/heapdump":
+    get:
+      tags:
+      - operation-handler
+      summary: handle
+      operationId: handleUsingGET_9
+      produces:
+      - application/octet-stream
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: false
+        schema:
+          type: object
+          additionalProperties:
+            type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/actuator/info":
+    get:
+      tags:
+      - operation-handler
+      summary: handle
+      operationId: handleUsingGET_10
+      produces:
+      - application/json
+      - application/vnd.spring-boot.actuator.v2+json
+      - application/vnd.spring-boot.actuator.v3+json
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: false
+        schema:
+          type: object
+          additionalProperties:
+            type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/actuator/loggers":
+    get:
+      tags:
+      - operation-handler
+      summary: handle
+      operationId: handleUsingGET_11
+      produces:
+      - application/json
+      - application/vnd.spring-boot.actuator.v2+json
+      - application/vnd.spring-boot.actuator.v3+json
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: false
+        schema:
+          type: object
+          additionalProperties:
+            type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/actuator/mappings":
+    get:
+      tags:
+      - operation-handler
+      summary: handle
+      operationId: handleUsingGET_13
+      produces:
+      - application/json
+      - application/vnd.spring-boot.actuator.v2+json
+      - application/vnd.spring-boot.actuator.v3+json
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: false
+        schema:
+          type: object
+          additionalProperties:
+            type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/actuator/metrics":
+    get:
+      tags:
+      - operation-handler
+      summary: handle
+      operationId: handleUsingGET_14
+      produces:
+      - application/json
+      - application/vnd.spring-boot.actuator.v2+json
+      - application/vnd.spring-boot.actuator.v3+json
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: false
+        schema:
+          type: object
+          additionalProperties:
+            type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/actuator/scheduledtasks":
+    get:
+      tags:
+      - operation-handler
+      summary: handle
+      operationId: handleUsingGET_16
+      produces:
+      - application/json
+      - application/vnd.spring-boot.actuator.v2+json
+      - application/vnd.spring-boot.actuator.v3+json
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: false
+        schema:
+          type: object
+          additionalProperties:
+            type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/actuator/threaddump":
+    get:
+      tags:
+      - operation-handler
+      summary: handle
+      operationId: handleUsingGET_17
+      produces:
+      - application/json
+      - application/vnd.spring-boot.actuator.v2+json
+      - application/vnd.spring-boot.actuator.v3+json
+      - text/plain;charset=UTF-8
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: false
+        schema:
+          type: object
+          additionalProperties:
+            type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/browser":
+    get:
+      tags:
+      - hal-browser
+      summary: browser
+      operationId: browserUsingGET
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/View"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/error":
+    get:
+      tags:
+      - basic-error-controller
+      summary: error
+      operationId: errorUsingGET
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    head:
+      tags:
+      - basic-error-controller
+      summary: error
+      operationId: errorUsingHEAD
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    post:
+      tags:
+      - basic-error-controller
+      summary: error
+      operationId: errorUsingPOST
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+      - basic-error-controller
+      summary: error
+      operationId: errorUsingPUT
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+      - basic-error-controller
+      summary: error
+      operationId: errorUsingDELETE
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    options:
+      tags:
+      - basic-error-controller
+      summary: error
+      operationId: errorUsingOPTIONS
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    patch:
+      tags:
+      - basic-error-controller
+      summary: error
+      operationId: errorUsingPATCH
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  "/filtering":
+    get:
+      tags:
+      - filtering-controller
+      summary: retrieveSomeBean
+      operationId: retrieveSomeBeanUsingGET
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/MappingJacksonValue"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/filtering-list":
+    get:
+      tags:
+      - filtering-controller
+      summary: retrieveListOfSomeBeans
+      operationId: retrieveListOfSomeBeansUsingGET
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/MappingJacksonValue"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/hello-world":
+    get:
+      tags:
+      - hello-world-controller
+      summary: helloWorld
+      operationId: helloWorldUsingGET
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/hello-world-bean":
+    get:
+      tags:
+      - hello-world-controller
+      summary: helloWorldBean
+      operationId: helloWorldBeanUsingGET
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HelloWorldBean"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/hello-world-internationalized":
+    get:
+      tags:
+      - hello-world-controller
+      summary: helloWorldInternationalized
+      operationId: helloWorldInternationalizedUsingGET
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/hello-world/path-variable/{name}":
+    get:
+      tags:
+      - hello-world-controller
+      summary: helloWorldPathVariable
+      operationId: helloWorldPathVariableUsingGET
+      parameters:
+      - name: name
+        in: path
+        description: name
+        required: true
+        type: string
+        x-example: abc
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/HelloWorldBean"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/jpa/users":
+    get:
+      tags:
+      - user-jpa-resource
+      summary: retrieveAllUsers
+      operationId: retrieveAllUsersUsingGET_1
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/User"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+      - user-jpa-resource
+      summary: createUser
+      operationId: createUserUsingPOST
+      parameters:
+      - in: body
+        name: user
+        description: user
+        required: true
+        schema:
+          "$ref": "#/definitions/User"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/jpa/users/{id}":
+    get:
+      tags:
+      - user-jpa-resource
+      summary: retrieveUser
+      operationId: retrieveUserUsingGET
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/EntityModel«User»"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+      - user-jpa-resource
+      summary: deleteUser
+      operationId: deleteUserUsingDELETE_1
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  "/jpa/users/{id}/posts":
+    get:
+      tags:
+      - user-jpa-resource
+      summary: retrieveAllUsers
+      operationId: retrieveAllUsersUsingGET
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Post"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+      - user-jpa-resource
+      summary: createPost
+      operationId: createPostUsingPOST
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      - in: body
+        name: post
+        description: post
+        required: true
+        schema:
+          "$ref": "#/definitions/Post"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/person/header":
+    get:
+      tags:
+      - person-versioning-controller
+      summary: headerV1
+      operationId: headerV1UsingGET
+      parameters:
+      - name: X-API-VERSION
+        in: header
+        required: true
+        type: string
+        x-example: abc
+        default: '1'
+        enum:
+        - '1'
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/PersonV1"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/person/param":
+    get:
+      tags:
+      - person-versioning-controller
+      summary: paramV1
+      operationId: paramV1UsingGET
+      parameters:
+      - name: version
+        in: query
+        required: true
+        type: string
+        default: '1'
+        enum:
+        - '1'
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/PersonV1"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/person/produces":
+    get:
+      tags:
+      - person-versioning-controller
+      summary: producesV1
+      operationId: producesV1UsingGET
+      produces:
+      - application/vnd.company.app-v1+json
+      - application/vnd.company.app-v2+json
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/PersonV1"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/posts":
+    get:
+      tags:
+      - Post Entity
+      summary: findAllPost
+      operationId: findAllPostUsingGET
+      produces:
+      - application/hal+json
+      - application/json
+      - application/x-spring-data-compact+json
+      - text/uri-list
+      parameters:
+      - name: page
+        in: query
+        description: page
+        required: false
+        type: integer
+        format: int32
+      - name: size
+        in: query
+        description: size
+        required: false
+        type: integer
+        format: int32
+      - name: sort
+        in: query
+        description: sort
+        required: false
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/CollectionModel«Post»"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+      - Post Entity
+      summary: savePost
+      operationId: savePostUsingPOST
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: true
+        schema:
+          "$ref": "#/definitions/Post"
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/EntityModel«Post»"
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/posts/{id}":
+    get:
+      tags:
+      - Post Entity
+      summary: findByIdPost
+      operationId: findByIdPostUsingGET
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/EntityModel«Post»"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+      - Post Entity
+      summary: savePost
+      operationId: savePostUsingPUT
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: true
+        schema:
+          "$ref": "#/definitions/Post"
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/EntityModel«Post»"
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+      - Post Entity
+      summary: deletePost
+      operationId: deletePostUsingDELETE
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    patch:
+      tags:
+      - Post Entity
+      summary: savePost
+      operationId: savePostUsingPATCH
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: true
+        schema:
+          "$ref": "#/definitions/Post"
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/EntityModel«Post»"
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  "/posts/{id}/user":
+    get:
+      tags:
+      - Post Entity
+      summary: postUser
+      operationId: postUserUsingGET
+      produces:
+      - application/hal+json
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/EntityModel«User»"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+      - Post Entity
+      summary: postUser
+      operationId: postUserUsingPOST
+      consumes:
+      - text/uri-list
+      - application/x-spring-data-compact+json
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/EntityModel«User»"
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+      - Post Entity
+      summary: postUser
+      operationId: postUserUsingPUT
+      consumes:
+      - text/uri-list
+      - application/x-spring-data-compact+json
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/EntityModel«User»"
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+      - Post Entity
+      summary: postUser
+      operationId: postUserUsingDELETE
+      consumes:
+      - text/uri-list
+      - application/x-spring-data-compact+json
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    patch:
+      tags:
+      - Post Entity
+      summary: postUser
+      operationId: postUserUsingPATCH
+      consumes:
+      - text/uri-list
+      - application/x-spring-data-compact+json
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/EntityModel«User»"
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  "/profile":
+    get:
+      tags:
+      - profile-controller
+      summary: listAllFormsOfMetadata
+      operationId: listAllFormsOfMetadataUsingGET
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/RepresentationModel«object»"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    options:
+      tags:
+      - profile-controller
+      summary: profileOptions
+      operationId: profileOptionsUsingOPTIONS
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  "/users":
+    get:
+      tags:
+      - user-resource
+      summary: retrieveAllUsers
+      operationId: retrieveAllUsersUsingGET_2
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/User"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+      - user-resource
+      summary: createUser
+      operationId: createUserUsingPOST_1
+      parameters:
+      - in: body
+        name: user
+        description: user
+        required: true
+        schema:
+          "$ref": "#/definitions/User"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/users/{id}":
+    get:
+      tags:
+      - user-resource
+      summary: retrieveUser
+      operationId: retrieveUserUsingGET_1
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/EntityModel«User»"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+      - User Entity
+      summary: saveUser
+      operationId: saveUserUsingPUT
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: true
+        schema:
+          "$ref": "#/definitions/User"
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/EntityModel«User»"
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+      - user-resource
+      summary: deleteUser
+      operationId: deleteUserUsingDELETE_2
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    patch:
+      tags:
+      - User Entity
+      summary: saveUser
+      operationId: saveUserUsingPATCH
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: true
+        schema:
+          "$ref": "#/definitions/User"
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/EntityModel«User»"
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  "/users/{id}/posts":
+    get:
+      tags:
+      - User Entity
+      summary: userPosts
+      operationId: userPostsUsingGET
+      produces:
+      - application/hal+json
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/CollectionModel«Post»"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+      - User Entity
+      summary: userPosts
+      operationId: userPostsUsingPOST
+      consumes:
+      - text/uri-list
+      - application/x-spring-data-compact+json
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/CollectionModel«Post»"
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+      - User Entity
+      summary: userPosts
+      operationId: userPostsUsingPUT
+      consumes:
+      - text/uri-list
+      - application/x-spring-data-compact+json
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/CollectionModel«Post»"
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+      - User Entity
+      summary: userPosts
+      operationId: userPostsUsingDELETE_1
+      consumes:
+      - text/uri-list
+      - application/x-spring-data-compact+json
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    patch:
+      tags:
+      - User Entity
+      summary: userPosts
+      operationId: userPostsUsingPATCH
+      consumes:
+      - text/uri-list
+      - application/x-spring-data-compact+json
+      parameters:
+      - in: body
+        name: body
+        description: body
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/CollectionModel«Post»"
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  "/users/{id}/posts/{postId}":
+    get:
+      tags:
+      - User Entity
+      summary: userPosts
+      operationId: userPostsUsingGET_1
+      consumes:
+      - application/hal+json
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      - name: postId
+        in: path
+        description: postId
+        required: true
+        type: string
+        x-example: abc
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/EntityModel«Post»"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+      - User Entity
+      summary: userPosts
+      operationId: userPostsUsingDELETE
+      consumes:
+      - text/uri-list
+      - application/x-spring-data-compact+json
+      parameters:
+      - name: id
+        in: path
+        description: id
+        required: true
+        type: integer
+        format: int32
+        x-example: 123
+      - name: postId
+        in: path
+        description: postId
+        required: true
+        type: string
+        x-example: abc
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  "/v1/person":
+    get:
+      tags:
+      - person-versioning-controller
+      summary: personV1
+      operationId: personV1UsingGET
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/PersonV1"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  "/v2/person":
+    get:
+      tags:
+      - person-versioning-controller
+      summary: personV2
+      operationId: personV2UsingGET
+      responses:
+        '200':
+          description: OK
+          schema:
+            "$ref": "#/definitions/PersonV2"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+definitions:
+  CollectionModel«Post»:
+    type: object
+    required:
+    - _embedded
+    - _links
+    properties:
+      _embedded:
+        "$ref": "#/definitions/EmbeddedCollection«Post»"
+      _links:
+        type: object
+        description: Link collection
+        additionalProperties:
+          "$ref": "#/definitions/Link"
+    title: CollectionModel«Post»
+    xml:
+      name: entities
+      attribute: false
+      wrapped: false
+    description: Resources of Post
+  CollectionModel«User»:
+    type: object
+    required:
+    - _embedded
+    - _links
+    properties:
+      _embedded:
+        "$ref": "#/definitions/EmbeddedCollection«User»"
+      _links:
+        type: object
+        description: Link collection
+        additionalProperties:
+          "$ref": "#/definitions/Link"
+    title: CollectionModel«User»
+    xml:
+      name: entities
+      attribute: false
+      wrapped: false
+    description: Resources of User
+  EmbeddedCollection«Post»:
+    type: object
+    required:
+    - posts
+    properties:
+      posts:
+        type: array
+        description: Resource collection
+        items:
+          "$ref": "#/definitions/Post"
+    title: EmbeddedCollection«Post»
+    xml:
+      name: content
+      wrapped: true
+    description: Embedded collection of Post
+  EmbeddedCollection«User»:
+    type: object
+    required:
+    - users
+    properties:
+      users:
+        type: array
+        description: Resource collection
+        items:
+          "$ref": "#/definitions/User"
+    title: EmbeddedCollection«User»
+    xml:
+      name: content
+      wrapped: true
+    description: Embedded collection of User
+  EntityModel«Post»:
+    type: object
+    properties:
+      description:
+        type: string
+      id:
+        type: integer
+        format: int32
+      links:
+        "$ref": "#/definitions/Links"
+    title: EntityModel«Post»
+  EntityModel«User»:
+    type: object
+    properties:
+      birthDate:
+        type: string
+        format: date-time
+        description: Birth date should be in the past
+      id:
+        type: integer
+        format: int32
+      links:
+        "$ref": "#/definitions/Links"
+      name:
+        type: string
+        description: Name should have atleast 2 characters
+        minLength: 2
+        maxLength: 2147483647
+      posts:
+        type: array
+        items:
+          "$ref": "#/definitions/Post"
+    title: EntityModel«User»
+  FilterProvider:
+    type: object
+    title: FilterProvider
+  HelloWorldBean:
+    type: object
+    properties:
+      message:
+        type: string
+    title: HelloWorldBean
+  Link:
+    type: object
+    properties:
+      href:
+        type: string
+      templated:
+        type: boolean
+    title: Link
+  LinkRelation:
+    type: object
+    title: LinkRelation
+  Links:
+    type: object
+    properties:
+      empty:
+        type: boolean
+    title: Links
+  MappingJacksonValue:
+    type: object
+    properties:
+      filters:
+        "$ref": "#/definitions/FilterProvider"
+      value:
+        type: object
+    title: MappingJacksonValue
+  ModelAndView:
+    type: object
+    properties:
+      empty:
+        type: boolean
+      model:
+        type: object
+      modelMap:
+        type: object
+        additionalProperties:
+          type: object
+      reference:
+        type: boolean
+      status:
+        type: string
+        enum:
+        - ACCEPTED
+        - ALREADY_REPORTED
+        - BAD_GATEWAY
+        - BAD_REQUEST
+        - BANDWIDTH_LIMIT_EXCEEDED
+        - CHECKPOINT
+        - CONFLICT
+        - CONTINUE
+        - CREATED
+        - DESTINATION_LOCKED
+        - EXPECTATION_FAILED
+        - FAILED_DEPENDENCY
+        - FORBIDDEN
+        - FOUND
+        - GATEWAY_TIMEOUT
+        - GONE
+        - HTTP_VERSION_NOT_SUPPORTED
+        - IM_USED
+        - INSUFFICIENT_SPACE_ON_RESOURCE
+        - INSUFFICIENT_STORAGE
+        - INTERNAL_SERVER_ERROR
+        - I_AM_A_TEAPOT
+        - LENGTH_REQUIRED
+        - LOCKED
+        - LOOP_DETECTED
+        - METHOD_FAILURE
+        - METHOD_NOT_ALLOWED
+        - MOVED_PERMANENTLY
+        - MOVED_TEMPORARILY
+        - MULTIPLE_CHOICES
+        - MULTI_STATUS
+        - NETWORK_AUTHENTICATION_REQUIRED
+        - NON_AUTHORITATIVE_INFORMATION
+        - NOT_ACCEPTABLE
+        - NOT_EXTENDED
+        - NOT_FOUND
+        - NOT_IMPLEMENTED
+        - NOT_MODIFIED
+        - NO_CONTENT
+        - OK
+        - PARTIAL_CONTENT
+        - PAYLOAD_TOO_LARGE
+        - PAYMENT_REQUIRED
+        - PERMANENT_REDIRECT
+        - PRECONDITION_FAILED
+        - PRECONDITION_REQUIRED
+        - PROCESSING
+        - PROXY_AUTHENTICATION_REQUIRED
+        - REQUESTED_RANGE_NOT_SATISFIABLE
+        - REQUEST_ENTITY_TOO_LARGE
+        - REQUEST_HEADER_FIELDS_TOO_LARGE
+        - REQUEST_TIMEOUT
+        - REQUEST_URI_TOO_LONG
+        - RESET_CONTENT
+        - SEE_OTHER
+        - SERVICE_UNAVAILABLE
+        - SWITCHING_PROTOCOLS
+        - TEMPORARY_REDIRECT
+        - TOO_EARLY
+        - TOO_MANY_REQUESTS
+        - UNAUTHORIZED
+        - UNAVAILABLE_FOR_LEGAL_REASONS
+        - UNPROCESSABLE_ENTITY
+        - UNSUPPORTED_MEDIA_TYPE
+        - UPGRADE_REQUIRED
+        - URI_TOO_LONG
+        - USE_PROXY
+        - VARIANT_ALSO_NEGOTIATES
+      view:
+        "$ref": "#/definitions/View"
+      viewName:
+        type: string
+    title: ModelAndView
+  Name:
+    type: object
+    properties:
+      firstName:
+        type: string
+      lastName:
+        type: string
+    title: Name
+  PersonV1:
+    type: object
+    properties:
+      name:
+        type: string
+    title: PersonV1
+  PersonV2:
+    type: object
+    properties:
+      name:
+        "$ref": "#/definitions/Name"
+    title: PersonV2
+  Post:
+    type: object
+    properties:
+      description:
+        type: string
+      id:
+        type: integer
+        format: int32
+    title: Post
+  RepresentationModel«object»:
+    type: object
+    properties:
+      links:
+        "$ref": "#/definitions/Links"
+    title: RepresentationModel«object»
+  TemplateVariable:
+    type: object
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+      type:
+        type: string
+        enum:
+        - COMPOSITE_PARAM
+        - FRAGMENT
+        - PATH_VARIABLE
+        - REQUEST_PARAM
+        - REQUEST_PARAM_CONTINUED
+        - SEGMENT
+    title: TemplateVariable
+  UriTemplate:
+    type: object
+    properties:
+      variableNames:
+        type: array
+        items:
+          type: string
+      variables:
+        type: array
+        items:
+          "$ref": "#/definitions/TemplateVariable"
+    title: UriTemplate
+  User:
+    type: object
+    properties:
+      birthDate:
+        type: string
+        format: date-time
+        description: Birth date should be in the past
+      id:
+        type: integer
+        format: int32
+      name:
+        type: string
+        description: Name should have atleast 2 characters
+        minLength: 2
+        maxLength: 2147483647
+      posts:
+        type: array
+        items:
+          "$ref": "#/definitions/Post"
+    title: User
+    description: All details about the user.
+  View:
+    type: object
+    properties:
+      contentType:
+        type: string
+    title: View

@@ -1,0 +1,331 @@
+openapi: 3.0.1
+info:
+  title: Api Documentation
+  description: Api Documentation
+  termsOfService: urn:tos
+  contact: {}
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
+  version: "1.0"
+servers:
+- url: http://localhost:50112/
+tags:
+- name: project-controller
+  description: Project Controller
+- name: problem-controller
+  description: Problem Controller
+- name: sub-problem-controller
+  description: sub Problem Controller
+paths:
+  /api/problem/{code}:
+    get:
+      tags:
+      - problem-controller
+      summary: code로 문제 조회
+      description: code는 6자리 영문과 숫자조합
+      operationId: getProblemByCodeUsingGET
+      parameters:
+      - name: code
+        in: path
+        description: code
+        required: true
+        schema:
+          type: string
+        example: abc
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CollectionProblem'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+    post:
+      tags:
+      - problem-controller
+      summary: 문제 생성
+      description: code는 6자리 영문과 숫자조합, problem parameter는 사용 X
+      operationId: saveProblemUsingPOST
+      parameters:
+      - name: code
+        in: path
+        description: code
+        required: true
+        schema:
+          type: string
+        example: abc
+      requestBody:
+        description: problem
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Problem'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      x-codegen-request-body-name: problem
+  /api/problem/{code}/all:
+    delete:
+      tags:
+      - problem-controller
+      summary: 'code로 모든 문제 삭제, '
+      description: code는 6자리 영문과 숫자조합
+      operationId: deleteAllProblemUsingDELETE
+      parameters:
+      - name: code
+        in: path
+        description: code
+        required: true
+        schema:
+          type: string
+        example: abc
+      responses:
+        200:
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        204:
+          description: No Content
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+  /api/project:
+    post:
+      tags:
+      - project-controller
+      summary: 프로젝트 생성
+      description: code는 자동생성, title(String) 필요
+      operationId: createProjectUsingPOST
+      requestBody:
+        description: project
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      x-codegen-request-body-name: project
+  /api/project/{code}:
+    get:
+      tags:
+      - project-controller
+      summary: code로 프로젝트 조회
+      description: 'code는 6자리 영문과 숫자조합 '
+      operationId: getProjectUsingGET
+      parameters:
+      - name: code
+        in: path
+        description: code
+        required: true
+        schema:
+          type: string
+        example: abc
+      responses:
+        200:
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: object
+            application/json:
+              schema:
+                type: object
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+    put:
+      tags:
+      - project-controller
+      summary: project 업데이트
+      description: code로 project 변경, title 필요
+      operationId: updateProjectUsingPUT
+      parameters:
+      - name: code
+        in: path
+        description: code
+        required: true
+        schema:
+          type: string
+        example: abc
+      requestBody:
+        description: project
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      x-codegen-request-body-name: project
+    delete:
+      tags:
+      - project-controller
+      summary: code로 프로젝트 삭제
+      description: code 필요
+      operationId: deleteProjectUsingDELETE
+      parameters:
+      - name: code
+        in: path
+        description: code
+        required: true
+        schema:
+          type: string
+        example: abc
+      responses:
+        200:
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+        204:
+          description: No Content
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+  /api/subproblem:
+    post:
+      tags:
+      - sub-problem-controller
+      summary: saveSubProblem
+      operationId: saveSubProblemUsingPOST
+      requestBody:
+        description: problemBody
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/subProblemBody'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      x-codegen-request-body-name: problemBody
+components:
+  schemas:
+    Project:
+      type: object
+      properties:
+        code:
+          type: string
+        idx:
+          type: integer
+          format: int64
+        problem:
+          type: array
+          items:
+            $ref: '#/components/schemas/Problem'
+        title:
+          type: string
+    CollectionProblem:
+      type: object
+    Problem:
+      type: object
+      properties:
+        idx:
+          type: integer
+          format: int64
+        problemCode:
+          type: string
+        title:
+          type: string
+    subProblemBody:
+      type: object
+      properties:
+        content:
+          type: string
+        pro_idx:
+          type: integer
+          format: int64

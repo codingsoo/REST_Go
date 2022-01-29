@@ -1,0 +1,2096 @@
+---
+auth:
+  required: true
+  queryParams: {}
+  headerParams: {}
+  apiKeysPath: null
+  headersPath: null
+  oauthPath: null
+testConfiguration:
+  operations:
+  - testPath: /
+    operationId: indexUsingGET
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /admin/printshops
+    operationId: getPrinShopsListUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /admin/register
+    operationId: newAdminUsingPOST
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /admin/seed
+    operationId: seedUsingPOST
+    method: post
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /admin/useed
+    operationId: useedUsingPOST
+    method: post
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /api/secured
+    operationId: securedUsingGET
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /autoconfig
+    operationId: invokeUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /autoconfig.json
+    operationId: invokeUsingGET_1
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /beans
+    operationId: invokeUsingGET_2
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /beans.json
+    operationId: invokeUsingGET_3
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /configprops
+    operationId: invokeUsingGET_4
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /configprops.json
+    operationId: invokeUsingGET_5
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /consumer/balance
+    operationId: getConsumerBalanceUsingGET
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /consumer/budget
+    operationId: calcBudgetForPrintRequestUsingPOST
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /consumer/info
+    operationId: getConsumerInfoUsingGET
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /consumer/info/update
+    operationId: updateConsumerInfoUsingPUT
+    method: put
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /consumer/notifications
+    operationId: getConsumerNotificationsUsingGET
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/consumer/printrequest/{printRequestID}/submit"
+    operationId: finishAndSubmitPrintRequestUsingPOST
+    method: post
+    testParameters:
+    - name: printRequestID
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /consumer/register
+    operationId: addUserUsingPOST
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /consumer/requests
+    operationId: getRequestsUsingGET
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/consumer/requests/cancel/{id}"
+    operationId: cancelRequestsUsingDELETE
+    method: delete
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /consumer/satisfied
+    operationId: getPrintShopSatisfiedRequestsUsingGET
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /consumer/subscribe
+    operationId: subscribeUsingGET
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /consumer/subscribe
+    operationId: subscribeUsingPUT
+    method: put
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /consumer/subscribe
+    operationId: subscribeUsingPOST
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /consumer/subscribe
+    operationId: subscribeUsingDELETE
+    method: delete
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/consumer/{consumerID}/printingschemas"
+    operationId: getConsumerPrintingSchemasUsingGET
+    method: get
+    testParameters:
+    - name: consumerID
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/consumer/{consumerID}/printingschemas"
+    operationId: addNewConsumerPrintingSchemaUsingPOST
+    method: post
+    testParameters:
+    - name: consumerID
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/consumer/{consumerID}/printingschemas/{printingSchemaID}"
+    operationId: editConsumerPrintingSchemaUsingPUT
+    method: put
+    testParameters:
+    - name: consumerID
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: printingSchemaID
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/consumer/{consumerID}/printingschemas/{printingSchemaID}"
+    operationId: deleteConsumerPrintingSchemaUsingDELETE
+    method: delete
+    testParameters:
+    - name: consumerID
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: printingSchemaID
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/consumer/{id}/notify"
+    operationId: greetingUsingPOST
+    method: post
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/consumer/{username}/notifications"
+    operationId: readAllNotificationsUsingPUT
+    method: put
+    testParameters:
+    - name: username
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/consumer/{username}/notifications"
+    operationId: deleteAllNotificationsUsingDELETE
+    method: delete
+    testParameters:
+    - name: username
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/documents/{id}"
+    operationId: getEmployeesUsingGET
+    method: get
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /dump
+    operationId: invokeUsingGET_6
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /dump.json
+    operationId: invokeUsingGET_7
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /env
+    operationId: invokeUsingGET_14
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /env.json
+    operationId: invokeUsingGET_15
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: "/env/{name}"
+    operationId: valueUsingGET
+    method: get
+    testParameters:
+    - name: name
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /error
+    operationId: errorHtmlUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /error
+    operationId: errorHtmlUsingPUT
+    method: put
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /error
+    operationId: errorHtmlUsingPOST
+    method: post
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /error
+    operationId: errorHtmlUsingDELETE
+    method: delete
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /health
+    operationId: invokeUsingGET_16
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /health
+    operationId: invokeUsingPUT
+    method: put
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /health
+    operationId: invokeUsingPOST
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /health
+    operationId: invokeUsingDELETE
+    method: delete
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /health.json
+    operationId: invokeUsingGET_17
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /health.json
+    operationId: invokeUsingPUT_1
+    method: put
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /health.json
+    operationId: invokeUsingPOST_1
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /health.json
+    operationId: invokeUsingDELETE_1
+    method: delete
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /heapdump
+    operationId: invokeUsingGET_18
+    method: get
+    testParameters:
+    - name: live
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomBoolean
+        genParameters: []
+        valid: true
+    expectedResponse: 200
+  - testPath: /heapdump.json
+    operationId: invokeUsingGET_19
+    method: get
+    testParameters:
+    - name: live
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomBoolean
+        genParameters: []
+        valid: true
+    expectedResponse: 200
+  - testPath: /info
+    operationId: invokeUsingGET_8
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /info.json
+    operationId: invokeUsingGET_9
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /login
+    operationId: loginUsingPOST
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /mappings
+    operationId: invokeUsingGET_10
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /mappings.json
+    operationId: invokeUsingGET_11
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /metrics
+    operationId: invokeUsingGET_20
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /metrics.json
+    operationId: invokeUsingGET_21
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: "/metrics/{name}"
+    operationId: valueUsingGET_1
+    method: get
+    testParameters:
+    - name: name
+      in: path
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/notifications/{notificationId}"
+    operationId: readNotificationUsingPUT
+    method: put
+    testParameters:
+    - name: notificationId
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/notifications/{notificationId}"
+    operationId: deleteNotificationUsingDELETE
+    method: delete
+    testParameters:
+    - name: notificationId
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/paypal/ipn/consumer/{consumerID}"
+    operationId: consumerLoadUpConfirmationUsingPOST
+    method: post
+    testParameters:
+    - name: consumerID
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/paypal/ipn/{printRequestID}"
+    operationId: someRequestPaymentConfirmationFromPaylPalUsingPOST
+    method: post
+    testParameters:
+    - name: printRequestID
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /printdocument
+    operationId: printDocumentUsingPOST
+    method: post
+    testParameters: null
+    expectedResponse: 200
+  - testPath: "/printdocument/{id}"
+    operationId: getDocumentUsingGET
+    method: get
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printdocument/{id}/budget"
+    operationId: calcBudgetForPrintRecipeUsingPOST
+    method: post
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /printshop
+    operationId: getManagerPrintShopUsingGET
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /printshops
+    operationId: getPrintShopsUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /printshops/history
+    operationId: getPrintShopHistoryRequestsUsingGET
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /printshops/nearest
+    operationId: getNearestPrintShopsUsingGET
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /printshops/requests
+    operationId: getPrintShopRequestsUsingGET
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/requests/cancel/{id}"
+    operationId: cancelPrintShopRequestsUsingPOST
+    method: post
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/requests/{id}"
+    operationId: getPrintShopRequestUsingGET
+    method: get
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/requests/{id}"
+    operationId: changeStatusPrintShopRequestsUsingPOST
+    method: post
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /printshops/satisfied
+    operationId: getPrintShopSatisfiedRequestsUsingGET_1
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /printshops/stats
+    operationId: getPrintShopStatisticsUsingGET
+    method: get
+    testParameters:
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/{id}"
+    operationId: getPrintShopUsingGET
+    method: get
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/{id}/pricetable"
+    operationId: getPrintShopPriceTableUsingGET
+    method: get
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/{id}/pricetable/covers"
+    operationId: editCoverItemUsingPUT
+    method: put
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/{id}/pricetable/covers"
+    operationId: addNewCoverItemUsingPOST
+    method: post
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/{id}/pricetable/deletecover"
+    operationId: deleteCoverItemUsingPOST
+    method: post
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/{id}/pricetable/deletepaper"
+    operationId: deletePaperItemUsingPOST
+    method: post
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/{id}/pricetable/deletering"
+    operationId: deleteRingItemUsingPOST
+    method: post
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/{id}/pricetable/papers"
+    operationId: editPaperItemUsingPUT
+    method: put
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/{id}/pricetable/papers"
+    operationId: addNewPaperItemUsingPOST
+    method: post
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/{id}/pricetable/rings"
+    operationId: editRingsItemUsingPUT
+    method: put
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/{id}/pricetable/rings"
+    operationId: addNewRingsItemUsingPOST
+    method: post
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/{id}/reviews"
+    operationId: getPrintShopReviewsUsingGET
+    method: get
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/{id}/reviews"
+    operationId: addPrintShopReviewUsingPOST
+    method: post
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/{printShopID}/employees"
+    operationId: getEmployeesUsingGET_1
+    method: get
+    testParameters:
+    - name: printShopID
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/{printShopID}/employees"
+    operationId: editEmployeeUsingPUT
+    method: put
+    testParameters:
+    - name: printShopID
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/{printShopID}/employees"
+    operationId: addEmployeeUsingPOST
+    method: post
+    testParameters:
+    - name: printShopID
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/{printShopID}/employees/{employeeID}"
+    operationId: deleteEmployeeUsingDELETE
+    method: delete
+    testParameters:
+    - name: printShopID
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: employeeID
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/{printShopID}/pricetable/editstapling"
+    operationId: editStaplingPriceUsingPUT
+    method: put
+    testParameters:
+    - name: printShopID
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/{printShopId}/reviews/{reviewId}"
+    operationId: editPrintShopReviewUsingPUT
+    method: put
+    testParameters:
+    - name: printShopId
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: reviewId
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/printshops/{printShopId}/reviews/{reviewId}"
+    operationId: deletePrintShopReviewUsingDELETE
+    method: delete
+    testParameters:
+    - name: printShopId
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: reviewId
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/request/accept/{id}"
+    operationId: acceptRequestUsingPOST
+    method: post
+    testParameters:
+    - name: id
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /request/register
+    operationId: registerRequestUsingPOST
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: "/request/reject/{printRequestID}"
+    operationId: rejectRequestUsingPOST
+    method: post
+    testParameters:
+    - name: printRequestID
+      in: path
+      weight: null
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - int64
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 100
+          objectValues: null
+        valid: true
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /requests/pending
+    operationId: acceptRequestUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /trace
+    operationId: invokeUsingGET_12
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /trace.json
+    operationId: invokeUsingGET_13
+    method: get
+    testParameters: null
+    expectedResponse: 200

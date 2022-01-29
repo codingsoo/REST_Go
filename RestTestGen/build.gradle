@@ -1,0 +1,32 @@
+allprojects {
+    apply plugin: 'java'
+
+    group 'io.resttestgen'
+    version '2.0-SNAPSHOT'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation 'org.antlr:antlr4-runtime:4.5.1'
+        implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.13.3'
+        implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.13.3'
+        implementation 'io.swagger.parser.v3:swagger-parser:2.0.21'
+        implementation group: 'org.apache.opennlp', name: 'opennlp-tools', version: '1.9.1'
+        implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.5'
+        implementation 'com.squareup.okhttp:okhttp:2.7.5' // TODO: deprecated, now v3 has been released.
+        implementation 'com.squareup.okhttp:logging-interceptor:2.7.5'
+
+        //implementation 'io.swagger.core.v3:swagger-annotations:2.0.0'
+
+        implementation group: 'org.jgrapht', name: 'jgrapht-core', version: '1.3.0'
+        implementation group: 'org.jgrapht', name: 'jgrapht-io', version: '1.3.0'
+
+        testImplementation group: 'junit', name: 'junit', version: '4.12'
+    }
+
+}

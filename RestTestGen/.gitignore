@@ -1,0 +1,10 @@
+.gradle/
+.idea/
+build/
+ErrorTester/build/
+Launcher/build/
+NominalTester/build/
+RequestBuilder/build/
+Swagger2DepGraph/build/
+SwaggerSchema/build/
+RestTestGen.jar

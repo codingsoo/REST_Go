@@ -1,0 +1,77 @@
+---
+auth:
+  required: true
+  queryParams: {}
+  headerParams: {}
+  apiKeysPath: null
+  headersPath: null
+  oauthPath: null
+testConfiguration:
+  operations:
+  - testPath: /actuator
+    operationId: linksUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /actuator/health
+    operationId: handleUsingGET_1
+    method: get
+    testParameters: []
+    expectedResponse: 200
+  - testPath: /actuator/health/**
+    operationId: handleUsingGET
+    method: get
+    testParameters: []
+    expectedResponse: 200
+  - testPath: /actuator/info
+    operationId: handleUsingGET_2
+    method: get
+    testParameters: []
+    expectedResponse: 200
+  - testPath: /application
+    operationId: getAllAlertsUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /application
+    operationId: createAlertUsingPOST
+    method: post
+    testParameters:
+    - name: body
+      in: body
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - value 1
+          - value 2
+          objectValues: null
+        valid: true
+    expectedResponse: 200
+  - testPath: /application/version
+    operationId: getVersionUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /error
+    operationId: errorUsingGET
+    method: get
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /error
+    operationId: errorUsingPUT
+    method: put
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /error
+    operationId: errorUsingPOST
+    method: post
+    testParameters: null
+    expectedResponse: 200
+  - testPath: /error
+    operationId: errorUsingDELETE
+    method: delete
+    testParameters: null
+    expectedResponse: 200

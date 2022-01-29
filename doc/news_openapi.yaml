@@ -1,0 +1,306 @@
+openapi: 3.0.1
+info:
+  title: API for REST News
+  description: Some description
+  version: 2.0.0
+servers:
+- url: http://localhost:50103/
+tags:
+- name: country-api
+  description: API for country data.
+- name: news-rest-api
+  description: Handling of creating and retrieving news
+paths:
+  /countries:
+    get:
+      tags:
+      - country-api
+      summary: Retrieve list of country names
+      operationId: getUsingGET
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      deprecated: false
+  /news:
+    get:
+      tags:
+      - news-rest-api
+      summary: Get all the news
+      operationId: getUsingGET_1
+      parameters:
+      - name: authorId
+        in: query
+        description: The id of the author who wrote the news
+        allowEmptyValue: false
+        schema:
+          type: string
+      - name: country
+        in: query
+        description: The country name
+        allowEmptyValue: false
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/vnd.tsdes.news+json;charset=UTF-8;version=2:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NewsDto'
+            application/json;charset=UTF-8:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NewsDto'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      deprecated: false
+    post:
+      tags:
+      - news-rest-api
+      summary: Create a news
+      operationId: createNewsUsingPOST
+      requestBody:
+        description: Text of news, plus author id and country. Should not specify
+          id or creation time
+        content:
+          application/vnd.tsdes.news+json;charset=UTF-8;version=2:
+            schema:
+              $ref: '#/components/schemas/NewsDto'
+          application/json;charset=UTF-8:
+            schema:
+              $ref: '#/components/schemas/NewsDto'
+        required: false
+      responses:
+        200:
+          description: OK
+          content:
+            application/vnd.tsdes.news+json;charset=UTF-8;version=2:
+              schema:
+                type: integer
+                format: int64
+            application/json;charset=UTF-8:
+              schema:
+                type: integer
+                format: int64
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      deprecated: false
+      x-codegen-request-body-name: dto
+  /news/{id}:
+    get:
+      tags:
+      - news-rest-api
+      summary: Get a single news specified by id
+      operationId: getNewsUsingGET
+      parameters:
+      - name: id
+        in: path
+        description: The numeric id of the news
+        required: true
+        schema:
+          type: string
+        example: abc
+      responses:
+        200:
+          description: OK
+          content:
+            application/vnd.tsdes.news+json;charset=UTF-8;version=2:
+              schema:
+                $ref: '#/components/schemas/NewsDto'
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/NewsDto'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      deprecated: false
+    put:
+      tags:
+      - news-rest-api
+      summary: Update an existing news
+      operationId: updateUsingPUT
+      parameters:
+      - name: id
+        in: path
+        description: The numeric id of the news
+        required: true
+        schema:
+          type: string
+        example: abc
+      requestBody:
+        description: The news that will replace the old one. Cannot change its id
+          though.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewsDto'
+        required: false
+      responses:
+        200:
+          description: OK
+          content:
+            application/vnd.tsdes.news+json;charset=UTF-8;version=2:
+              schema:
+                type: object
+            application/json;charset=UTF-8:
+              schema:
+                type: object
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      deprecated: false
+      x-codegen-request-body-name: dto
+    delete:
+      tags:
+      - news-rest-api
+      summary: Delete a news with the given id
+      operationId: deleteUsingDELETE
+      parameters:
+      - name: id
+        in: path
+        description: The numeric id of the news
+        required: true
+        schema:
+          type: string
+        example: abc
+      responses:
+        200:
+          description: OK
+          content:
+            application/vnd.tsdes.news+json;charset=UTF-8;version=2:
+              schema:
+                type: object
+            application/json;charset=UTF-8:
+              schema:
+                type: object
+        204:
+          description: No Content
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+      deprecated: false
+  /news/{id}/text:
+    put:
+      tags:
+      - news-rest-api
+      summary: Update the text content of an existing news
+      operationId: updateTextUsingPUT
+      parameters:
+      - name: id
+        in: path
+        description: The numeric id of the news
+        required: true
+        schema:
+          type: integer
+          format: int64
+        example: 123
+      requestBody:
+        description: The new text which will replace the old one
+        content:
+          text/plain:
+            schema:
+              type: string
+        required: false
+      responses:
+        200:
+          description: OK
+          content:
+            application/vnd.tsdes.news+json;charset=UTF-8;version=2:
+              schema:
+                type: object
+            application/json;charset=UTF-8:
+              schema:
+                type: object
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      deprecated: false
+      x-codegen-request-body-name: text
+components:
+  schemas:
+    NewsDto:
+      title: NewsDto
+      type: object
+      properties:
+        authorId:
+          type: string
+          description: The id of the author that wrote/created this news
+        country:
+          type: string
+          description: The country this news is related to
+        creationTime:
+          type: string
+          description: When the news was first created/published
+          format: date-time
+        id:
+          type: string
+          description: Deprecated. Use newsId instead
+        newsId:
+          type: string
+          description: The id of the news
+        text:
+          type: string
+          description: The text of the news
