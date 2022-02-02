@@ -36,3 +36,13 @@ You can run EvoMasterWB, EvoMasterBB, RESTler, RESTest, RestTestGen, bBOXRT, Sch
 ```
 python run_tool.py {tool_name} {service_name} {time_limit}
 ```
+
+### Current tool setup & configuration
+
+Currently, we used the setup & configuration after reading each tool's manual and paper. We chose recommended options, but not all options are described in most cases, and the best choice depends on the target REST API service and the tool's running time. We tried to find the setup for finding their best-performing option, but if the testing tool requires direct request end-point dependency information and the parameter value, we did not follow them since they are the goal of this comparison.
+
+- Schemathesis: We rotated three options---all checkers, negative testing, % and default mode.
+- RESTest: We provided inter-parameter dependency information for the benchmarks in the format required by the tool.
+- EvoMaster: We implemented a driver for instrumenting Java/Kotlin code and database injection.
+- RESTler: We used the BFS-fast fuzzing mode for the one-hour runs and the random-walk fuzzing mode for the 24-hour run. We turned on all security checkers.
+- Dredd: We put default example values such as 123, "abc," and 0.123 to the required parameters.
