@@ -52,5 +52,8 @@ Currently, we used the setup & configuration after reading each tool's manual an
 - Tcases: Since this tool only generates the test cases but does not have a feature for sending the request, we made a simple script to send the request using the generated request. We used [Junit](https://junit.org/junit4/) library to send the generated tests' requests. To avoid Java constant pool limit error, we used the -S option to divide into each API path.
 - APIFuzzer: In their [document](https://github.com/KissPeter/APIFuzzer), we could not find any recommended options, so default options are used in our experiment.
 
+### Result
 
+![res](images/figure_all.png)
 
+1: Evo-White, 2: RESTler, 3: RestTestGen, 4: RESTest, 5: bBOXRT , 6: RestTestGen, 7: Tcases, 8: Dredd, 9: Evo-Black, 10: APIFuzzer, A: Features-Service, B: Languagetool, C: NCS, D: News, E: OCVN, F: ProxyPrint, G: Restcountries, H: Scout-API, I: SCS, J: ERC20-Rest-Service GitLab, K: Genome-Nexus, L: Person-Controller, M: Problem-Controller, N: Rest-Study, O: Spring-Batch-Rest, P: Spring-Boot-Sample-App, Q: User-Management, R: CWA-Verification, S: Market, T: Project-Tracking-System. The color of the bar represents the running time - 10 min: ![10min](images/10min.png), 20 min: ![20min](images/20min.png), 30 min: ![30min](images/30min.png), 40 min: ![40min](images/40min.png), 50 min: ![50min](images/50min.png), 60 min: ![1h](images/1h.png), and 24 hr: ![24h](images/24h.PNG).
