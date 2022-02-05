@@ -126,6 +126,8 @@ if __name__ == "__main__":
             whitebox(40106)
         elif tool == "evomaster-blackbox":
             blackbox("https://raw.githubusercontent.com/randomqwerqwer/issta/main/restcountries_openapi.yaml", "50106")
+        elif tool == "apifuzzer":
+            blackbox(os.path.join(curdir, "doc/restcountries_openapi.yaml"), "50106")
         else:
             blackbox(os.path.join(curdir, "doc/restcountries_openapi.yaml"), "50106/rest")
     elif service == "scout-api":
