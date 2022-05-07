@@ -30,9 +30,18 @@ Now you are ready to run the experiment!
 You can run the service cwa-verification, erc20-rest-service, features-service, genome-nexus, languagetool, market, ncs, news, ocvn, person-controller, problem-controller, project-tracking-system, proxyporint, rest-study, restcountries, scout-api, scs, spring-batch-rest, spring-boot-sample-app, and user-management through our python script.
 
 ```
-python3 run_service.py {service_name} {coverage_collecting_port} {whitebox} # If you want to run blackbox tools, type blackbox instead of whitebox
+python3 run_service.py {service_name} {jacoco_port} {whitebox} # If you want to run blackbox tools, type blackbox instead of whitebox
 ```
 
+### How to get achieved code coverage?
+
+You can collect the achieved code coverage. You can select 1. The number of code coverage report 2. time in minutes. For example, if you set the number 6 and time 10, it will collect the achieved code coverage every 10 minute for 6 times. The user will have a code coverage report for 10m, 20m, 30m, 40m, 50m, and 1h.
+
+```
+tmux new -s cov # Create a session for collecting coverage
+sh get_cov.sh {jacoco_port} {number of interval} {minutes between intervals}
+# press ctrl + b + d to detach the session
+```
 
 ### How to run the tool?
 
@@ -41,6 +50,10 @@ You can run EvoMasterWB, EvoMasterBB, RESTler, RESTest, RestTestGen, bBOXRT, Sch
 ```
 python3 run_tool.py {tool_name} {service_name} {time_limit}
 ```
+
+### Anaylze the result.
+
+In the root directory, you will have a log file and jacoco coverage report file. You can generate a coverage report using jacoco (java -jar org.jacoco.cli-0.8.7-nodeps.jar report ...).
 
 ### Current tool setup & configuration
 
