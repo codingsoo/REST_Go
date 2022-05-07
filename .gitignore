@@ -21,6 +21,7 @@ rest-gitlab/
 .ethereum
 cp.txt
 *.log
+log_*
 evomaster-benchmark-cs-rest-artificial-news.iml
 evomaster.jar
 RestTestGen.jar
