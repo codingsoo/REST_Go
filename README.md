@@ -1,8 +1,17 @@
-## Automated Test Generation for REST APIs: No Time to Rest Yet
+# Automated Test Generation for REST APIs: No Time to Rest Yet
 
-### Updates
+## Getting Started
 
-- Accepted to the ISSTA 2022!
+### Requirements
+
+If you are using Ubuntu 20.04, we give you a setup script for automatic requirements setup.
+
+- Hardware: You need at least 12GB of RAM. 
+- Software: Java8, Java11, Git, Sudo, Wget, zip, unzip, MVN, Python3.8-pip, Virtualenv, NodeJS v10.19, and Docker 20.10. 
+
+### Check the basic functionality
+
+In this section, we give detailed instructions to check the basic functionality of this artifact.
 
 ### How to setup the environment?
 
