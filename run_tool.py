@@ -54,7 +54,7 @@ if __name__ == "__main__":
     tool = sys.argv[1]
     service = sys.argv[2]
     port = sys.argv[3]
-    time_limit = 1
+    time_limit = "1"
 
     curdir = os.getcwd()
 

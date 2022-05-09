@@ -4,7 +4,6 @@ import sys
 
 if __name__ == "__main__":
     name = sys.argv[1]
-    subprocess.run("tmux kill-sess -a", shell=True)
     subprocess.run("tmux kill-sess -t " + name, shell=True)
 
     if name == "genome-nexus":

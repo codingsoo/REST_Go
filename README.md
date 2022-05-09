@@ -1,38 +1,36 @@
-[![DOI](https://zenodo.org/badge/453116552.svg)](https://zenodo.org/badge/latestdoi/453116552)
-
 # Automated Test Generation for REST APIs: No Time to Rest Yet
 
 ## Getting Started
 
 ### Check the basic functionality
 
-In this section, we give detailed instructions to check the basic functionality of this artifact.
+In this section, we give instructions to check the basic functionality of this artifact.
 We show how our tool works with project-tracking-system service.
 
 ### Requirements
 
 We used Google Cloud e2-standard-4 machines running Ubuntu 20.04 for this project, but any platform with the requirements below would work.
-The setup script is tested in Google Cloud e2-standard-4 (Ubuntu 20.04).
 
-- Requirements: Java8, Java11, Git, Sudo, Wget, zip, unzip, MVN, Gradle, Python3.8-pip, Virtualenv, NodeJS v10.19, and Docker 20.10. 
+- Requirements: Java8, Java11, Git, Sudo, Wget, Zip, Unzip, MVN, Gradle, Python3.8-pip, Virtualenv, NodeJS v10.19, and Docker 20.10. 
 
 ### Setup
 
-You can manually set up the requirements, but if you are using the same environment with us, you can simply type the command below
+The setup script is tested in Google Cloud e2-standard-4 (Ubuntu 20.04).
+You can manually set up the requirements, but you can use the setup script if you are using the same environment as us.
 
 ```
 cd REST_Go # Go to the root directory
 sh small_setup.sh
 ```
 
-It will take around 18 minutes and 30 seconds. Other environment needs to handle the dependencies manually.
+It will take around 18 minutes and 30 seconds.
 
 ### Run
 
 You can run the service and tool using run_small.py. The python script runs the service for six minutes.
-You can select tool name and port name. Possible tool name can be: evomaster-whitebox, evomaster-blackbox, restler, restest, resttestgen, bboxrt, schemathesis, dredd, tcases, and apifuzzer.
-You can pick any available port number for the port name. The port number is for collecting the achieved code coverage.
-Before run the script, make sure you are using the virtualenv.
+You should have the tool name and port number. Possible tool names can be evomaster-whitebox, evomaster-blackbox, restler, restest, resttestgen, bboxrt, schemathesis, dredd, tcases, and apifuzzer.
+The port number is for collecting the achieved code coverage. You can pick any available port number which is not in use.
+Before running the script, please make sure you are using the virtualenv.
 
 ```
 source venv/bin/activate
@@ -43,38 +41,41 @@ It will automatically start the service and coverage collecting script. You can 
 
 ### Generate Report
 
-We provide a python script which automatically generates a report for the experiment. You can see the result in data/{service name}/res.csv!
-You can also find the detailed error message and time log in data/{service name}/error.json and data/{service name}/time.json.
+We provide a python script which automatically generates a report for the experiment you have done. 
 
 ```
 python3 report_small.py {port_number}
 ```
 
+You can see the result in data/{service name}/res.csv!
+You can also find the detailed error message and time log in data/{service name}/error.json and data/{service name}/time.json.
 The report has seven rows and three columns. 
-The first row to sixth row stands for the time (1 min, 2 min, 3 min, 4 min, 5 min, 6 min). For these rows, each column stands for the percentage of achieved line, branch, and method coverage.
-The last row stands for the found error. The columns are the number of found error, unique error, and library error.
+The first row to the sixth row stands for the time (1 min, 2 min, 3 min, 4 min, 5 min, 6 min). For these rows, each column stands for the percentage of achieved line, branch, and method coverage.
+The last row stands for the found error. The columns are the number of found errors, unique errors, and library errors.
 
 ### Stop service
 
-Users can stop service using the following command.
+Users can stop service and tmux sessions using the following command.
 
 ```
-python3 stop_service.py {service name}
+tmux ls # To find the session lists
+python3 stop_service.py {session name}
 ```
 
 ## Detailed Description
 
-
 ### Setup
 
-We used Google Cloud e2-standard-4 machines running Ubuntu 20.04. Each machine has four 2.2GHz Intel-Xeon processors and 16GB RAM. The major dependencies that we used are Java8, Java11, Python3.8, NodeJS v10.19, and Docker 20.10. We provide a setup script that setups the environment, tools, and services. Please note that we used Ubuntu 20.04 environment. We also tested this artifact in Debian 10 and MacOS 12, but we don't provide automated setup script for those environments.
-The setup script needs around 2 hours.
+It has the same dependency as the Getting Started section, but we need to build each service.
+We provide a setup script to install the requirements and build the services. The script was tested on Google Cloud e2-standard-4 machines running Ubuntu 20.04.
+
 ```
 sh setup.sh
 ```
 
-We have configured the each database for the service using the Docker, and that is automatically done in our script. However, users need to manually set Private Ethereum network for ERC20-rest-service.
+We have configured database for each service using the Docker, and that is automatically done when you run the service. However, users need to manually run Private Ethereum network for ERC20-rest-service.
 To setup the Ethereum network, users can follow the commands below.
+
 ```
 tmux new -s ether # Create a session for ethereum
 geth --datadir ethereum init genesis.json
