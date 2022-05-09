@@ -95,7 +95,7 @@ for f in files:
                     with open(ff, 'r') as log_file:
                         data = log_file.readlines()
                     for line in data:
-                        if 'ERROR' in line:
+                        if 'ERROR ' in line:
                             error_start = True
                             error_time = line[:line.rfind(':')]
                         elif error_start and 'java.lang.Thread.run' in line:
