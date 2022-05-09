@@ -44,13 +44,13 @@ rm evomaster.jar.zip
 cd ..
 
 # Install RESTler 8.3.0
-wget https://github.com/microsoft/restler-fuzzer/archive/refs/tags/v8.3.0.tar.gz \
+. ./venv/bin/activate \
+&& wget https://github.com/microsoft/restler-fuzzer/archive/refs/tags/v8.3.0.tar.gz \
 && tar -xvf v8.3.0.tar.gz \
 && rm v8.3.0.tar.gz \
 && mv restler-fuzzer-8.3.0 restler \
 && cd restler \
 && mkdir restler_bin \
-&& . ./venv/bin/activate \
 && python ./build-restler.py --dest_dir ./restler_bin
 cd ..
 
