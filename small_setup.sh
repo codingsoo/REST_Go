@@ -5,8 +5,9 @@ sudo apt-get install -y software-properties-common \
 unzip wget gcc git vim libcurl4-nss-dev tmux
 
 # Install Java8
-sudo apt-get install -y openjdk-11-jdk
+sudo apt-get install -y openjdk-8-jdk
 sudo apt-get install -y maven gradle
+sudo apt-get install -y openjdk-11-jdk
 
 # Install Python3
 sudo apt-get install -y python3-pip python3-virtualenv
