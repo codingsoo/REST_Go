@@ -19,7 +19,7 @@ cd REST-Go # Go to the root directory
 sh small_setup.sh
 ```
 
-It will take around 4 minutes.
+It will take around 18 minutes and 30 seconds.
 
 ### Run
 
@@ -32,6 +32,8 @@ python3 run_small.py {tool_name} {port_number}
 ```
 
 It will automatically start the service and coverage collecting script. You can check them with the command "tmux ls" and kill them with the command "tmux kill-sess -t {session name}."
+
+### Generate Report
 
 ### Check the basic functionality
 
