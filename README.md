@@ -2,6 +2,11 @@
 
 ## Getting Started
 
+### Check the basic functionality
+
+In this section, we give detailed instructions to check the basic functionality of this artifact.
+We show how our tool works with project-tracking-system service.
+
 ### Requirements
 
 We used Google Cloud e2-standard-4 machines running Ubuntu 20.04 for this project, but any platform with the requirements below would work.
@@ -26,8 +31,10 @@ It will take around 18 minutes and 30 seconds.
 You can run the service and tool using run_small.py. The python script runs the service for six minutes.
 You can select tool name and port name. Possible tool name can be: evomaster-whitebox, evomaster-blackbox, restler, restest, resttestgen, bboxrt, schemathesis, dredd, tcases, and apifuzzer.
 You can pick any free port number for the port name. The port number is for collecting the achieved code coverage.
+Before run the script, make sure you are using the virtualenv.
 
 ```
+source venv/bin/activate
 python3 run_small.py {tool_name} {port_number}
 ```
 
@@ -35,12 +42,16 @@ It will automatically start the service and coverage collecting script. You can 
 
 ### Generate Report
 
-### Check the basic functionality
+We automatically generate the report for the experiment. You can see the result in data/{service name}/res.csv!
 
-In this section, we give detailed instructions to check the basic functionality of this artifact.
-We show how our tool works with project-tracking-system service.
+```
+python3 report_small.py {port_number}
+```
 
-### How to setup the environment?
+## Detailed Description
+
+
+### Setup
 
 We used Google Cloud e2-standard-4 machines running Ubuntu 20.04. Each machine has four 2.2GHz Intel-Xeon processors and 16GB RAM. The major dependencies that we used are Java8, Java11, Python3.8, NodeJS v10.19, and Docker 20.10. We provide a setup script that setups the environment, tools, and services. Please note that we used Ubuntu 20.04 environment.
 
@@ -89,22 +100,12 @@ python3 run_tool.py {tool_name} {service_name} {time_limit}
 
 ### Anaylze the result.
 
-In the root directory, you will have a log file and jacoco coverage report file. You can generate a coverage report using jacoco (java -jar org.jacoco.cli-0.8.7-nodeps.jar report ...).
+You can analyze the result. You provide the automatic reporting script.
 
-### Current tool setup & configuration
 
-Currently, we used the setup & configuration after reading each tool's manual and paper. We chose recommended options, but not all options are described in most cases, and the best choices depend on the target REST API service, combinations of the options, and the tool's running time. We tried to find the setup for finding their best-performing option, but if the testing tool requires exact request end-point dependency information and the parameter value, we did not follow them since finding them is one of our goal of this comparison.
-
-- EvoMasterWB: We implemented an EvoMasterWB driver to instrument Java/Kotlin code and inject data resources into the database. To write the driver, we checked two videos ([1](https://www.youtube.com/watch?v=3mYxjgnhLEo), [2](https://www.youtube.com/watch?v=ORxZoYw7LnM)) and [a document] (https://github.com/EMResearch/EvoMaster/blob/master/docs/write_driver.md). We made sure that we could set up the source code instrument part, which is their main contribution.
-- EvoMasterBB: We referred to [a document](https://github.com/EMResearch/EvoMaster/blob/master/docs/blackbox.md). We kept all options as default because they don't have any recommendations in the document.
-- Dredd: From the [Dredd document](https://dredd.org/en/latest/), Dredd needs example values for required parameters. We put default example values such as 123, "abc," and 0.123 to the required parameters if they don't have any example value.
-- RESTler: We used the BFS-fast fuzzing mode for the one-hour runs and the random-walk fuzzing mode for the 24-hour run. We turned on all security checkers. Those options are from their paper and their [Github repository](https://github.com/microsoft/restler-fuzzer).
-- RestTestGen: This tool has just been released, and it does not have recommended options yet. We used the jar file that the author gave us and used the default setting.
-- bBOXRT: We could not find recommended options in their [document](https://git.dei.uc.pt/cnl/bBOXRT) and their paper, so we used default options.
-- RESTest: We referred to [a document](https://github.com/isa-group/RESTest). We used the main README example setting as a default setting and provided inter-parameter dependency information for the benchmarks in the format required by the tool.
-- Schemathesis: Since the paper used three options and quick checks that require a short time, we tried all three options by rotating each option sequentially: all checkers, negative testing, and default mode. The quick check feature lets us run the tool in ten minutes for all options they used in their paper, so we found we could get the best Schemathesis option if we use all three options by rotating them.
-- Tcases: Since this tool only generates the test cases but does not have a feature for sending the request, we made a simple script to send the request using the generated request. We used [Junit](https://junit.org/junit4/) library to send the generated tests' requests. To avoid Java constant pool limit error, we used the -S option to divide into each API path.
-- APIFuzzer: In their [document](https://github.com/KissPeter/APIFuzzer), we could not find any recommended options, so default options are used in our experiment.
+```
+python3 report.py {port number} {service name}
+```
 
 ### Result
 

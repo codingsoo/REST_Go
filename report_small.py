@@ -1,7 +1,11 @@
+
 import os
 import sys
 import json
 import subprocess
+from os import listdir
+from os.path import isfile, join
+
 from glob import glob
 
 curdir = os.getcwd()
@@ -268,7 +272,7 @@ with open('res.csv', 'w') as f:
 
 
 subprocess.run("mkdir -p " + "data/" + services[19], shell=True)
-subprocess.call('mv res.csv ' + "data/" + serivces[19], shell=True)
+subprocess.call('mv res.csv ' + "data/" + services[19], shell=True)
 subprocess.call('mv *.csv ' + "data/" + services[19], shell=True)
 subprocess.call('mv error.json ' + "data/" + services[19], shell=True)
 subprocess.call('mv time.json ' + "data/" + services[19], shell=True)
