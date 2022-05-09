@@ -19,7 +19,7 @@ The setup script is tested in Google Cloud e2-standard-4 (Ubuntu 20.04).
 You can manually set up the requirements, but if you are using the same environment with us, you can simply type the command below
 
 ```
-cd REST-Go # Go to the root directory
+cd REST_Go # Go to the root directory
 sh small_setup.sh
 ```
 
