@@ -12,6 +12,7 @@ If you are using Ubuntu 20.04, we give you a setup script for automatic requirem
 ### Check the basic functionality
 
 In this section, we give detailed instructions to check the basic functionality of this artifact.
+We show how our tool works with project-tracking-system service.
 
 ### How to setup the environment?
 

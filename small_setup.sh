@@ -23,7 +23,7 @@ wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.
 && sudo apt-get install -y apt-transport-https \
 && sudo apt-get install -y dotnet-sdk-5.0
 
-######RESTful Service#####
+######project-tracking-system#####
 cd services/jdk11/project-tracking-system && mvn clean install -DskipTests && mvn dependency:build-classpath -Dmdep.outputFile=cp.txt
 
 ######Testing Tools#####
