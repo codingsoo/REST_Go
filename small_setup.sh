@@ -1,4 +1,4 @@
-# sudo apt-get update && sudo apt-get install -y git && git clone https://github.com/codingsoo/REST-Go.git
+# sudo apt-get update && sudo apt-get install -y git && git clone https://github.com/codingsoo/REST_Go.git
 
 # Install Common Utilities
 sudo apt-get install -y software-properties-common \
@@ -35,13 +35,11 @@ wget https://github.com/EMResearch/EvoMaster/releases/download/v1.3.0/evomaster.
 unzip evomaster.jar.zip
 rm evomaster.jar.zip
 
-. venv/bin/activate
-
 # Install Schemathesis 3.11.6
-pip install schemathesis
+. venv/bin/activate && pip install schemathesis
 
 # Install APIFuzzer 0.9.11
-cd APIFuzzer && pip install .
+. venv/bin/activate && cd APIFuzzer && pip install .
 cd ..
 
 # Install RESTler 8.3.0
@@ -51,6 +49,7 @@ wget https://github.com/microsoft/restler-fuzzer/archive/refs/tags/v8.3.0.tar.gz
 && mv restler-fuzzer-8.3.0 restler \
 && cd restler \
 && mkdir restler_bin \
+&& . venv/bin/activate \
 && python ./build-restler.py --dest_dir ./restler_bin
 cd ..
 

@@ -64,10 +64,11 @@ if __name__ == "__main__":
         subprocess.run("python3 run_service.py " + service + " " + str(port) + " blackbox", shell=True)
 
     print("Service started in the background. To check or kill the session, please see README file.")
-    time.sleep(30)
+    time.sleep(10)
 
     subprocess.run("tmux new -d -s cov 'sh get_cov.sh " + str(port) + " 6 6" + "'", shell=True)
     print("We are getting coverage now.")
+    time.sleep(10)
 
     if tool == "evomaster-whitebox":
         whitebox(40119)
