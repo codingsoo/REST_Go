@@ -4,10 +4,32 @@
 
 ### Requirements
 
-If you are using Ubuntu 20.04, we give you a setup script for automatic requirements setup.
+We used Google Cloud e2-standard-4 machines running Ubuntu 20.04 for this project, but any platform with the requirements below would work.
+The setup script is provided for Google Cloud e2-standard-4 (Ubuntu 20.04).
 
 - Hardware: You need at least 12GB of RAM. 
-- Software: Java8, Java11, Git, Sudo, Wget, zip, unzip, MVN, Python3.8-pip, Virtualenv, NodeJS v10.19, and Docker 20.10. 
+- Software: Java8, Java11, Git, Sudo, Wget, zip, unzip, MVN, Gradle, Python3.8-pip, Virtualenv, NodeJS v10.19, and Docker 20.10. 
+
+### Setup
+
+You can manually set up the environment, but if you use the same environment with us, you can simply type the command below
+
+```
+cd REST-Go # Go to the root directory
+sh small_setup.sh
+```
+
+It will take around 3 minutes.
+
+### Run
+
+You can run the service and tool using run_small.py. The python script runs the service for six minutes.
+You can select tool name and port name. Possible tool name can be: evomaster-whitebox, evomaster-blackbox, restler, restest, resttestgen, bboxrt, schemathesis, dredd, tcases, and apifuzzer.
+You can pick any free port number for the port name. The port number is for collecting the achieved code coverage.
+
+```
+python3 run_small.py {tool_name} {port_number}
+```
 
 ### Check the basic functionality
 

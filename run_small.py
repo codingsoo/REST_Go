@@ -5,14 +5,14 @@ import subprocess
 
 
 def whitebox(port):
-    timeout = time.time() + 60 * 60 * int(time_limit)
+    timeout = time.time() + 60 * 60 * float(time_limit)
     while time.time() < timeout:
         subprocess.run("rm -rf " + service, shell=True)
         subprocess.run("java -jar evomaster.jar --sutControllerPort " + str(port) + " --maxTime " + time_limit + "h --outputFolder " + service, shell=True)
 
 
 def blackbox(swagger, port):
-    timeout = time.time() + 60 * 60 * int(time_limit)
+    timeout = time.time() + 60 * 60 * float(time_limit)
     while time.time() < timeout:
         if tool == "dredd":
             subprocess.run("dredd " + swagger + ' http://localhost:' + str(port), shell=True)
@@ -67,7 +67,7 @@ if __name__ == "__main__":
     time.sleep(30)
 
     subprocess.run("tmux new -d -s cov 'sh get_cov.sh " + str(port) + " 6 6" + "'", shell=True)
-    print("Service started in the background. To check or kill the session, please see README file.")
+    print("We are getting coverage now.")
 
     if tool == "evomaster-whitebox":
         whitebox(40119)
