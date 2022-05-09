@@ -48,6 +48,10 @@ We automatically generate the report for the experiment. You can see the result 
 python3 report_small.py {port_number}
 ```
 
+The report has seven rows and three columns. 
+The first row to sixth row stands for the time (1 min, 2 min, 3 min, 4 min, 5 min, 6 min). For these rows, each column stands for the percentage of achieved line, branch, and method coverage.
+The last row stands for the found error. The columns are the number of found error, unique error, and library error.
+
 ## Detailed Description
 
 
@@ -112,6 +116,10 @@ You can analyze the result. You provide the automatic reporting script.
 ```
 python3 report.py {port number} {service name}
 ```
+
+The report has seven rows and three columns. 
+The first row to sixth row stands for the time (10 min, 20 min, 30 min, 40 min, 50 min, 60 min). For these rows, each column stands for the percentage of achieved line, branch, and method coverage.
+The last row stands for the found error. The columns are the number of found error, unique error, and library error.
 
 ### Stop service
 

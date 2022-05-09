@@ -142,11 +142,11 @@ if os.path.isdir(mypath):
                     if "EMDriver" in element[2] or "EmbeddedControl" in element[2]:
                         continue
                     c_branch[0] = c_branch[0] + int(element[6])
-                    t_branch[0] = t_branch[0] + int(element[5]) + c_branch[0]
+                    t_branch[0] = t_branch[0] + int(element[5]) + int(element[6])
                     c_line[0] = c_line[0] + int(element[8])
-                    t_line[0] = t_line[0] + int(element[7]) + c_line[0]
+                    t_line[0] = t_line[0] + int(element[7]) + int(element[8])
                     c_method[0] = c_method[0] + int(element[12])
-                    t_method[0] = t_method[0] + c_method[0] + int(element[11])
+                    t_method[0] = t_method[0] + int(element[12]) + int(element[11])
         elif '_2.csv' in dir_file:
             with open(os.path.join(mypath, dir_file)) as f:
                 lines = f.readlines()
@@ -159,11 +159,11 @@ if os.path.isdir(mypath):
                     if "EMDriver" in element[2] or "EmbeddedControl" in element[2]:
                         continue
                     c_branch[1] = c_branch[1] + int(element[6])
-                    t_branch[1] = t_branch[1] + int(element[5]) + c_branch[1]
+                    t_branch[1] = t_branch[1] + int(element[5]) + int(element[6])
                     c_line[1] = c_line[1] + int(element[8])
-                    t_line[1] = t_line[1] + int(element[7]) + c_line[1]
+                    t_line[1] = t_line[1] + int(element[7]) + int(element[8])
                     c_method[1] = c_method[1] + int(element[12])
-                    t_method[1] = t_method[1] + int(element[11]) + c_method[1]
+                    t_method[1] = t_method[1] + int(element[11]) + int(element[12])
         elif '_3.csv' in dir_file:
             with open(os.path.join(mypath, dir_file)) as f:
                 lines = f.readlines()
@@ -176,11 +176,11 @@ if os.path.isdir(mypath):
                     if "EMDriver" in element[2] or "EmbeddedControl" in element[2]:
                         continue
                     c_branch[2] = c_branch[2] + int(element[6])
-                    t_branch[2] = t_branch[2] + int(element[5]) + c_branch[2]
+                    t_branch[2] = t_branch[2] + int(element[5]) + int(element[6])
                     c_line[2] = c_line[2] + int(element[8])
-                    t_line[2] = t_line[2] + int(element[7]) + c_line[2]
+                    t_line[2] = t_line[2] + int(element[7]) + int(element[8])
                     c_method[2] = c_method[2] + int(element[12])
-                    t_method[2] = t_method[2] + int(element[11]) + c_method[2]
+                    t_method[2] = t_method[2] + int(element[11]) + int(element[12])
         elif '_4.csv' in dir_file:
             with open(os.path.join(mypath, dir_file)) as f:
                 lines = f.readlines()
@@ -193,11 +193,11 @@ if os.path.isdir(mypath):
                     if "EMDriver" in element[2] or "EmbeddedControl" in element[2]:
                         continue
                     c_branch[3] = c_branch[3] + int(element[6])
-                    t_branch[3] = t_branch[3] + int(element[5]) + c_branch[3]
+                    t_branch[3] = t_branch[3] + int(element[5]) + int(element[6])
                     c_line[3] = c_line[3] + int(element[8])
-                    t_line[3] = t_line[3] + int(element[7]) + c_line[3]
+                    t_line[3] = t_line[3] + int(element[7]) + int(element[8])
                     c_method[3] = c_method[3] + int(element[12])
-                    t_method[3] = t_method[3] + int(element[11]) + c_method[3]
+                    t_method[3] = t_method[3] + int(element[11]) + int(element[12])
         elif '_5.csv' in dir_file:
             with open(os.path.join(mypath, dir_file)) as f:
                 lines = f.readlines()
@@ -210,11 +210,11 @@ if os.path.isdir(mypath):
                     if "EMDriver" in element[2] or "EmbeddedControl" in element[2]:
                         continue
                     c_branch[4] = c_branch[4] + int(element[6])
-                    t_branch[4] = t_branch[4] + int(element[5]) + c_branch[4]
+                    t_branch[4] = t_branch[4] + int(element[5]) + int(element[6])
                     c_line[4] = c_line[4] + int(element[8])
-                    t_line[4] = t_line[4] + int(element[7]) + c_line[4]
+                    t_line[4] = t_line[4] + int(element[7]) + int(element[8])
                     c_method[4] = c_method[4] + int(element[12])
-                    t_method[4] = t_method[4] + int(element[11]) + c_method[4]
+                    t_method[4] = t_method[4] + int(element[11]) + int(element[12])
         elif '_6.csv' in dir_file:
             with open(os.path.join(mypath, dir_file)) as f:
                 lines = f.readlines()
@@ -227,11 +227,11 @@ if os.path.isdir(mypath):
                     if "EMDriver" in element[2] or "EmbeddedControl" in element[2]:
                         continue
                     c_branch[5] = c_branch[5] + int(element[6])
-                    t_branch[5] = t_branch[5] + int(element[5]) + c_branch[5]
+                    t_branch[5] = t_branch[5] + int(element[5]) + int(element[6])
                     c_line[5] = c_line[5] + int(element[8])
-                    t_line[5] = t_line[5] + int(element[7]) + c_line[5]
+                    t_line[5] = t_line[5] + int(element[7]) + int(element[8])
                     c_method[5] = c_method[5] + int(element[12])
-                    t_method[5] = t_method[5] + int(element[11]) + c_method[5]
+                    t_method[5] = t_method[5] + int(element[11]) + int(element[12])
         elif 'error' in dir_file:
             with open(os.path.join(mypath, dir_file), 'r') as f:
                 data = json.load(f)
@@ -251,7 +251,7 @@ if os.path.isdir(mypath):
                         flag = False
                 if flag:
                     crucial = crucial + 1
-res = res + "0,0,0,0,0,0\n"
+res = ""
 
 for k in range(6):
     if t_line[k] != 0:
@@ -266,7 +266,8 @@ for k in range(6):
         method = c_method[k]/t_method[k]
     else:
         method = 0
-    res = res + str(line) + ',' + str(branch) + ',' + str(method) + ',' + str(error/7) + ',' + str(unique_err/7) + ',' + str(crucial/7) + '\n'
+    res = res + str(line*100) + '%,' + str(branch*100) + '%,' + str(method*100) + '%\n'
+res = res + str(error) + ',' + str(unique_err) + ',' + str(crucial) + '\n'
 
 with open('res.csv', 'w') as f:
     f.write(res)

@@ -53,9 +53,22 @@ def blackbox(swagger, port):
 if __name__ == "__main__":
     tool = sys.argv[1]
     service = sys.argv[2]
-    time_limit = sys.argv[3]
+    port = sys.argv[3]
+    time_limit = 1
 
     curdir = os.getcwd()
+
+    if tool == "evomaster-whitebox":
+        subprocess.run("python3 run_service.py " + service + " " + str(port) + " whitebox", shell=True)
+    else:
+        subprocess.run("python3 run_service.py " + service + " " + str(port) + " blackbox", shell=True)
+
+    print("Service started in the background. To check or kill the session, please see README file.")
+    time.sleep(60)
+
+    subprocess.run("tmux new -d -s small_cov 'sh get_cov.sh " + str(port) + "'", shell=True)
+    print("We are getting coverage now.")
+    time.sleep(60)
 
     if service == "features-service":
         if tool == "evomaster-whitebox":
