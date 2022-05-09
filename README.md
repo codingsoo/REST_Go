@@ -83,7 +83,7 @@ geth --networkid 42 --datadir ethereum --http --http.port 8545 --http.corsdomain
 >> personal.unlockAccount("05f4172fda1cf398fad85ceb60ad9f4180f0ab3a", "11")
 >> miner.start(1) # wait until mine process starts
 >> personal.unlockAccount("05f4172fda1cf398fad85ceb60ad9f4180f0ab3a", "11")
-# press ctrl + b + d to detach the session
+# press ctrl + b + d to detach the session # For Mac, command + b + d 
 ```
 
 Now you are ready to run the experiment!
