@@ -66,7 +66,7 @@ if __name__ == "__main__":
     print("Service started in the background. To check or kill the session, please see README file.")
     time.sleep(10)
 
-    subprocess.run("tmux new -d -s cov 'sh get_cov.sh " + str(port) + " 6 6" + "'", shell=True)
+    subprocess.run("tmux new -d -s cov 'sh get_cov.sh " + str(port) + " 1" + "'", shell=True)
     print("We are getting coverage now.")
     time.sleep(10)
 
