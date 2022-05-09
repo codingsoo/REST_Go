@@ -10,14 +10,13 @@ We show how our tool works with project-tracking-system service.
 ### Requirements
 
 We used Google Cloud e2-standard-4 machines running Ubuntu 20.04 for this project, but any platform with the requirements below would work.
-The setup script is provided for Google Cloud e2-standard-4 (Ubuntu 20.04).
+The setup script is tested in Google Cloud e2-standard-4 (Ubuntu 20.04).
 
-- Hardware: You need at least 12GB of RAM. 
-- Software: Java8, Java11, Git, Sudo, Wget, zip, unzip, MVN, Gradle, Python3.8-pip, Virtualenv, NodeJS v10.19, and Docker 20.10. 
+- Requirements: Java8, Java11, Git, Sudo, Wget, zip, unzip, MVN, Gradle, Python3.8-pip, Virtualenv, NodeJS v10.19, and Docker 20.10. 
 
 ### Setup
 
-You can manually set up the environment, but if you use the same environment with us, you can simply type the command below
+You can manually set up the requirements, but if you are using the same environment with us, you can simply type the command below
 
 ```
 cd REST-Go # Go to the root directory
@@ -30,7 +29,7 @@ It will take around 18 minutes and 30 seconds. Other environment needs to handle
 
 You can run the service and tool using run_small.py. The python script runs the service for six minutes.
 You can select tool name and port name. Possible tool name can be: evomaster-whitebox, evomaster-blackbox, restler, restest, resttestgen, bboxrt, schemathesis, dredd, tcases, and apifuzzer.
-You can pick any free port number for the port name. The port number is for collecting the achieved code coverage.
+You can pick any available port number for the port name. The port number is for collecting the achieved code coverage.
 Before run the script, make sure you are using the virtualenv.
 
 ```
@@ -42,7 +41,8 @@ It will automatically start the service and coverage collecting script. You can 
 
 ### Generate Report
 
-We automatically generate the report for the experiment. You can see the result in data/{service name}/res.csv!
+We provide a python script which automatically generates a report for the experiment. You can see the result in data/{service name}/res.csv!
+You can also find the detailed error message and time log in data/{service name}/error.json and data/{service name}/time.json.
 
 ```
 python3 report_small.py {port_number}
@@ -52,13 +52,20 @@ The report has seven rows and three columns.
 The first row to sixth row stands for the time (1 min, 2 min, 3 min, 4 min, 5 min, 6 min). For these rows, each column stands for the percentage of achieved line, branch, and method coverage.
 The last row stands for the found error. The columns are the number of found error, unique error, and library error.
 
+### Stop service
+
+Users can stop service using the following command.
+
+```
+python3 stop_service.py {service name}
+```
+
 ## Detailed Description
 
 
 ### Setup
 
 We used Google Cloud e2-standard-4 machines running Ubuntu 20.04. Each machine has four 2.2GHz Intel-Xeon processors and 16GB RAM. The major dependencies that we used are Java8, Java11, Python3.8, NodeJS v10.19, and Docker 20.10. We provide a setup script that setups the environment, tools, and services. Please note that we used Ubuntu 20.04 environment. We also tested this artifact in Debian 10 and MacOS 12, but we don't provide automated setup script for those environments.
-
 The setup script needs around 2 hours.
 ```
 sh setup.sh
@@ -78,37 +85,17 @@ geth --networkid 42 --datadir ethereum --http --http.port 8545 --http.corsdomain
 
 Now you are ready to run the experiment!
 
-### How to run the service?
-
-You can run the service cwa-verification, erc20-rest-service, features-service, genome-nexus, languagetool, market, ncs, news, ocvn, person-controller, problem-controller, project-tracking-system, proxyporint, rest-study, restcountries, scout-api, scs, spring-batch-rest, spring-boot-sample-app, and user-management through our python script.
-You can pick any free port number for the port name. The port number is for collecting the achieved code coverage.
-Before run the script, make sure you are using the virtualenv.
-```
-source venv/bin/activate
-python3 run_service.py {service_name} {port number} {whitebox} # If you want to run blackbox tools, type blackbox instead of whitebox
-```
-
-It will automatically start the service and coverage collecting script. You can check them with the command "tmux ls" and kill them with the command "tmux kill-sess -t {session name}."
-
-### How to get achieved code coverage?
-
-You can collect the achieved code coverage. You can select 1. The number of code coverage report 2. time in minutes. For example, if you set the number 6 and time 10, it will collect the achieved code coverage every 10 minute for 6 times. The user will have a code coverage report for 10m, 20m, 30m, 40m, 50m, and 1h.
-
-```
-tmux new -s cov # Create a session for collecting coverage
-sh get_cov.sh {jacoco_port} {number of interval} {minutes between intervals}
-# press ctrl + b + d to detach the session
-```
-
 ### How to run the tool?
 
 You can run EvoMasterWB, EvoMasterBB, RESTler, RESTest, RestTestGen, bBOXRT, Schemathesis, Dredd, Tcases, and APIFuzzer for the services.
-
+The possible services are cwa-verification, erc20-rest-service, features-service, genome-nexus, languagetool, market, ncs, news, ocvn, person-controller, problem-controller, project-tracking-system, proxyporint, rest-study, restcountries, scout-api, scs, spring-batch-rest, spring-boot-sample-app, and user-management through our python script.
+You can pick any free port number for the port name. The port number is for collecting the achieved code coverage.
+Before run the script, make sure you are using the virtualenv.
 ```
 python3 run_tool.py {tool_name} {service_name} {time_limit}
 ```
 
-### Anaylze the result.
+### Generate a report.
 
 You can analyze the result. You provide the automatic reporting script.
 
@@ -120,6 +107,7 @@ python3 report.py {port number} {service name}
 The report has seven rows and three columns. 
 The first row to sixth row stands for the time (10 min, 20 min, 30 min, 40 min, 50 min, 60 min). For these rows, each column stands for the percentage of achieved line, branch, and method coverage.
 The last row stands for the found error. The columns are the number of found error, unique error, and library error.
+You can compare the result to our result in the paper!
 
 ### Stop service
 
