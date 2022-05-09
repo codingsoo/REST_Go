@@ -25,6 +25,7 @@ wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.
 
 ######project-tracking-system#####
 cd services/jdk11/project-tracking-system && mvn clean install -DskipTests && mvn dependency:build-classpath -Dmdep.outputFile=cp.txt
+cd ../..
 
 ######Testing Tools#####
 # Install Dredd 14.1.0
