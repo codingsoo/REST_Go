@@ -24,7 +24,7 @@ cd REST-Go # Go to the root directory
 sh small_setup.sh
 ```
 
-It will take around 18 minutes and 30 seconds.
+It will take around 18 minutes and 30 seconds. Other environment needs to handle the dependencies manually.
 
 ### Run
 
@@ -53,13 +53,15 @@ python3 report_small.py {port_number}
 
 ### Setup
 
-We used Google Cloud e2-standard-4 machines running Ubuntu 20.04. Each machine has four 2.2GHz Intel-Xeon processors and 16GB RAM. The major dependencies that we used are Java8, Java11, Python3.8, NodeJS v10.19, and Docker 20.10. We provide a setup script that setups the environment, tools, and services. Please note that we used Ubuntu 20.04 environment.
+We used Google Cloud e2-standard-4 machines running Ubuntu 20.04. Each machine has four 2.2GHz Intel-Xeon processors and 16GB RAM. The major dependencies that we used are Java8, Java11, Python3.8, NodeJS v10.19, and Docker 20.10. We provide a setup script that setups the environment, tools, and services. Please note that we used Ubuntu 20.04 environment. We also tested this artifact in Debian 10 and MacOS 12, but we don't provide automated setup script for those environments.
 
+The setup script needs around 2 hours.
 ```
 sh setup.sh
 ```
 
-We have configured the each database for the service using the Docker, and that is automatically done in our script. However, users need to set Private Ethereum network if they want to run ERC20-rest-service.
+We have configured the each database for the service using the Docker, and that is automatically done in our script. However, users need to manually set Private Ethereum network for ERC20-rest-service.
+To setup the Ethereum network, users can follow the commands below.
 ```
 tmux new -s ether # Create a session for ethereum
 geth --datadir ethereum init genesis.json
@@ -75,10 +77,14 @@ Now you are ready to run the experiment!
 ### How to run the service?
 
 You can run the service cwa-verification, erc20-rest-service, features-service, genome-nexus, languagetool, market, ncs, news, ocvn, person-controller, problem-controller, project-tracking-system, proxyporint, rest-study, restcountries, scout-api, scs, spring-batch-rest, spring-boot-sample-app, and user-management through our python script.
+You can pick any free port number for the port name. The port number is for collecting the achieved code coverage.
+Before run the script, make sure you are using the virtualenv.
+```
+source venv/bin/activate
+python3 run_service.py {service_name} {port number} {whitebox} # If you want to run blackbox tools, type blackbox instead of whitebox
+```
 
-```
-python3 run_service.py {service_name} {jacoco_port} {whitebox} # If you want to run blackbox tools, type blackbox instead of whitebox
-```
+It will automatically start the service and coverage collecting script. You can check them with the command "tmux ls" and kill them with the command "tmux kill-sess -t {session name}."
 
 ### How to get achieved code coverage?
 
@@ -105,6 +111,14 @@ You can analyze the result. You provide the automatic reporting script.
 
 ```
 python3 report.py {port number} {service name}
+```
+
+### Stop service
+
+Users can stop service using the following command.
+
+```
+python3 stop_service.py {service name}
 ```
 
 ### Result

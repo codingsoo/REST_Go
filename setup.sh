@@ -2,7 +2,7 @@
 
 # Install Common Utilities
 sudo apt-get install -y software-properties-common \
-unzip wget gcc git vim libcurl4-nss-dev tmux
+unzip wget gcc git vim libcurl4-nss-dev tmux git
 
 # Install Java8
 sudo apt-get install -y openjdk-8-jdk
