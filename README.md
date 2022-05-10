@@ -29,9 +29,9 @@ It will take around 20 minutes to finish setup.
 
 You can test the service with a tool using `run_small.py`, a python script to test the service for six minutes.
 To use this script, you should provide the tool's name and a port number. Possible tools' names are`evomaster-whitebox`, `evomaster-blackbox`, `restler`, `restest`, `resttestgen`, `bboxrt`, `schemathesis`, `dredd`, `tcases`, and `apifuzzer`.
-You can use any available port number. We recommend to use different port number for each run because it will add the achieved code coverage based on the previous run if you use the same port number. The port number is used for collecting the achieved code coverage.
+You can use any available port number. You should use a different port number for each run, otherwise the code coverage will be based on the previous runs. The port number is used for collecting the achieved code coverage.
 Before running the script, make sure that you use `virtualenv`.
-Also, we need to check if there is already running session. You can check the running sessions using "tmux ls" command. If there is running session, you may want to kill the session before running new experiment.
+Also, we need to check if there is already running session. You can check the running sessions using "tmux ls" command. If there is running session, you should kill the session before running a new experiment.
 You can kill the session with "tmux kill-sess -t {session name}." You should find the session name in "tmux ls" command if there is any.
 
 ```
@@ -39,11 +39,11 @@ source venv/bin/activate
 python3 run_small.py {tool_name} {port_number}
 ```
 
-It will automatically start the service and the script for getting coverage. You can check all the runing sessions with the command "tmux ls" and kill any session with the command "tmux kill-sess -t {session name}."
+It will automatically start the service and the script for getting coverage.
 
 ### Generate Report
 
-We provide a python script to generate a report showing the code coverage achieved and bug founds. You can see the result in data/{service name}/res.csv!
+We provide a python script to generate a report showing the code coverage achieved and bug founds. You can see the result in data/{service name}/res.csv.
 You can also find the detailed error message and time log in data/{service name}/error.json and data/{service name}/time.json.
 
 ```
@@ -62,9 +62,9 @@ Users can stop a service using the following command.
 python3 stop_service.py {service name}
 ```
 
-### Example commands and Result
+### An Example
 
-We show example command sets and result.
+One can use the commands below to test the service project-tracking-system with RESTler and obtain the result.
 
 ```
 cd REST_Go
@@ -74,7 +74,7 @@ python run_small.py restler 10200
 python report_small.py 10200
 ```
 
-If you check the data/project-tracking-system/res.csv, you will see sixth row (1 hour coverage) 35%, 7.3%, 4.7% and seventh row (found bugs) 35, 7, 5.
+If you check the data/project-tracking-system/res.csv, you will see the sixth row for 1-hour code coverage (which should be something similar to "35%, 7.3%, 4.7%") and the seventh row for the number of bugs found (which should be something similar to "35, 7, 5").
 
 ## Detailed Description
 
@@ -102,7 +102,7 @@ Now you are ready to run the experiment!
 ### How to run the tool?
 
 You can use the following tools `EvoMasterWB`, `EvoMasterBB`, `RESTler`, `RESTest`, `RestTestGen`, `bBOXRT`, `Schemathesis`, `Dredd`, `Tcases`, and `APIFuzzer` to test, using our python script, the following services `cwa-verification`, `erc20-rest-service`, `features-service`, `genome-nexus`, `languagetool`, `market`, `ncs`, `news`, `ocvn`, `person-controller`, `problem-controller`, `project-tracking-system`, `proxyporint`, `rest-study`, `restcountries`, `scout-api`, `scs`, `spring-batch-rest`, `spring-boot-sample-app`, and `user-management`.
-You can use any available port number. We recommend to use different port number for each run because it will add the achieved code coverage based on the previous run if you use the same port number. The port number is used for collecting the achieved code coverage.
+You can use any available port number, but make sure to use different port numbers for different runs. The port number is used for collecting the achieved code coverage.
 Before run the script, make sure that you use the `virtualenv`.
 Also, we need to check if there is already running session. You can check the running sessions using "tmux ls" command. If there is running session, you may want to kill the session before running new experiment.
 You can kill the session with "tmux kill-sess -t {session name}." You should find the session name in "tmux ls" command if there is any.
@@ -132,7 +132,7 @@ python3 stop_service.py {service name}
 
 ### Result
 
-You can compare your result to our result below. This figure, although not shown in the paper, is generated based on the same experiment results. Since the tools have randomness, you may have a slightly different result from us. We run each tool ten times and get their average.
+You can compare your result to our result below. This figure, although not shown in the paper, is generated based on the same experiment results. Since the tools have randomness, your results may be different from ours. Note that we ran each tool ten times and computed the average.
 
 ![res](images/figure_all.png)
 
