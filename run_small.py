@@ -80,3 +80,7 @@ if __name__ == "__main__":
         blackbox(os.path.join(curdir, "doc/project_tcases.yaml"), 50118)
     else:
         blackbox(os.path.join(curdir, "doc/project_swagger.json"), 50118)
+
+    print("Experiments are done. We are safely closing the service now. If you want to run more, please check if there is unclosed session. You can check it with 'tmux ls' command. To close the session, you can run 'tmux kill-sess -t {session name}'")
+    time.sleep(30)
+    subprocess.run("tmux kill-sess -t " + service, shell=True)
