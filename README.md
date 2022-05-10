@@ -31,6 +31,7 @@ You can run the service and tool using run_small.py. The python script runs the 
 You should have the tool name and port number. Possible tool names can be evomaster-whitebox, evomaster-blackbox, restler, restest, resttestgen, bboxrt, schemathesis, dredd, tcases, and apifuzzer.
 The port number is for collecting the achieved code coverage. You can pick any available port number which is not in use.
 Before running the script, please make sure you are using the virtualenv.
+Also, you should not remove previous sessions if you have. You can refer to the `Stop Session` section for this information.
 
 ```
 source venv/bin/activate
@@ -53,7 +54,7 @@ The report has seven rows and three columns.
 The first row to the sixth row stands for the time (1 min, 2 min, 3 min, 4 min, 5 min, 6 min). For these rows, each column stands for the percentage of achieved line, branch, and method coverage.
 The last row stands for the found error. The columns are the number of found errors, unique errors, and library errors.
 
-### Stop service
+### Stop session
 
 Users can stop service and tmux sessions using the following command.
 
@@ -94,8 +95,11 @@ You can run EvoMasterWB, EvoMasterBB, RESTler, RESTest, RestTestGen, bBOXRT, Sch
 The possible services are cwa-verification, erc20-rest-service, features-service, genome-nexus, languagetool, market, ncs, news, ocvn, person-controller, problem-controller, project-tracking-system, proxyporint, rest-study, restcountries, scout-api, scs, spring-batch-rest, spring-boot-sample-app, and user-management through our python script.
 You can pick any free port number for the port name. The port number is for collecting the achieved code coverage.
 Before run the script, make sure you are using the virtualenv.
+Also, you should not remove previous sessions if you have. You can refer to `Stop Session` section for this information.
+
 ```
-python3 run_tool.py {tool_name} {service_name} {time_limit}
+source venv/bin/activate
+python run_tool.py {tool_name} {service_name} {time_limit}
 ```
 
 ### Generate a report.
@@ -112,12 +116,13 @@ The first row to sixth row stands for the time (10 min, 20 min, 30 min, 40 min, 
 The last row stands for the found error. The columns are the number of found error, unique error, and library error.
 You can compare the result to our result in the paper!
 
-### Stop service
+### Stop session
 
-Users can stop service using the following command.
+Users can stop service using the following command. 
 
 ```
-python3 stop_service.py {service name}
+tmux ls # To find the session lists
+python3 stop_service.py {session name}
 ```
 
 ### Result
