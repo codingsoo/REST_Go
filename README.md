@@ -4,34 +4,33 @@
 
 ### Check the basic functionality
 
-In this section, we give instructions to check the basic functionality of this artifact.
+In this section, we give detailed instructions to check the basic functionality of this artifact.
 We show how our tool works with project-tracking-system service.
 
 ### Requirements
 
 We used Google Cloud e2-standard-4 machines running Ubuntu 20.04 for this project, but any platform with the requirements below would work.
+The setup script is tested in Google Cloud e2-standard-4 (Ubuntu 20.04).
 
-- Requirements: Java8, Java11, Git, Sudo, Wget, Zip, Unzip, MVN, Gradle, Python3.8-pip, Virtualenv, NodeJS v10.19, and Docker 20.10. 
+- Requirements: Java8, Java11, Git, Sudo, Wget, zip, unzip, MVN, Gradle, Python3.8-pip, Virtualenv, NodeJS v10.19, and Docker 20.10. 
 
 ### Setup
 
-The setup script is tested in Google Cloud e2-standard-4 (Ubuntu 20.04).
-You can manually set up the requirements, but you can use the setup script if you are using the same environment as us.
+You can manually set up the requirements, but if you are using the same environment we are using, you should be able to simply type the command below
 
 ```
 cd REST_Go # Go to the root directory
 sh small_setup.sh
 ```
 
-It will take around 18 minutes and 30 seconds.
+It will take around 20 minutes for the script to complete.
 
 ### Run
 
-You can run the service and tool using run_small.py. The python script runs the service for six minutes.
-You should have the tool name and port number. Possible tool names can be evomaster-whitebox, evomaster-blackbox, restler, restest, resttestgen, bboxrt, schemathesis, dredd, tcases, and apifuzzer.
-The port number is for collecting the achieved code coverage. You can pick any available port number which is not in use.
-Before running the script, please make sure you are using the virtualenv.
-Also, you should not remove previous sessions if you have. You can refer to the `Stop Session` section for this information.
+You can run the service and tool using run_small.py, a python script that runs the service for six minutes.
+You can select tool name and port name, where possible tool names are: evomaster-whitebox, evomaster-blackbox, restler, restest, resttestgen, bboxrt, schemathesis, dredd, tcases, and apifuzzer.
+You can pick any available port number for the port name. The port number is for collecting the achieved code coverage.
+Before running the script, make sure you are using the virtualenv.
 
 ```
 source venv/bin/activate
@@ -42,41 +41,38 @@ It will automatically start the service and coverage collecting script. You can 
 
 ### Generate Report
 
-We provide a python script which automatically generates a report for the experiment you have done. 
+We provide a python script which automatically generates a report for the experiment. You can see the result in data/{service name}/res.csv!
+You can also find the detailed error message and time log in data/{service name}/error.json and data/{service name}/time.json.
 
 ```
 python3 report_small.py {port_number}
 ```
 
-You can see the result in data/project-tracking-system/res.csv!
-You can also find the detailed error message and time log in data/project-tracking-system/error.json and data/project-tracking-system/time.json.
-The data/project-tracking-system/res.csv has seven rows and three columns. 
-The first six rows show the coverage achieved in 1, 2, 3, 4, 5, and 6 minutes. For these rows, each column shows the percentage of achieved line, branch, and method coverage.
-The last row stands for the found error. The columns are the number of found errors, unique errors, and library errors.
+The report has seven rows and three columns. 
+The first row to sixth row stands for the time (1 min, 2 min, 3 min, 4 min, 5 min, 6 min). For these rows, each column stands for the percentage of achieved line, branch, and method coverage.
+The last row stands for the found error. The columns are the number of found error, unique error, and library error.
 
-### Stop session
+### Stop service
 
-Users can stop service and tmux sessions using the following command.
+Users can stop service using the following command.
 
 ```
-tmux ls # To find the session lists
-python3 stop_service.py {session name}
+python3 stop_service.py {service name}
 ```
 
 ## Detailed Description
 
+
 ### Setup
 
-It has the same dependency as the Getting Started section, but we need to build each service.
-We provide a setup script to install the requirements and build the services. The script was tested on Google Cloud e2-standard-4 machines running Ubuntu 20.04.
-
+We used Google Cloud e2-standard-4 machines running Ubuntu 20.04. Each machine has four 2.2GHz Intel-Xeon processors and 16GB RAM. The major dependencies that we used are Java8, Java11, Python3.8, NodeJS v10.19, and Docker 20.10. We provide a setup script that setups the environment, tools, and services. Please note that we used Ubuntu 20.04 environment. We also tested this artifact in Debian 10 and MacOS 12, but we don't provide automated setup script for those environments.
+The setup script needs around 2 hours.
 ```
 sh setup.sh
 ```
 
-We have configured database for each service using the Docker, and that is automatically done when you run the service. However, users need to manually run Private Ethereum network for ERC20-rest-service.
+We have configured the each database for the service using the Docker, and that is automatically done in our script. However, users need to manually set Private Ethereum network for ERC20-rest-service.
 To setup the Ethereum network, users can follow the commands below.
-
 ```
 tmux new -s ether # Create a session for ethereum
 geth --datadir ethereum init genesis.json
@@ -84,7 +80,7 @@ geth --networkid 42 --datadir ethereum --http --http.port 8545 --http.corsdomain
 >> personal.unlockAccount("05f4172fda1cf398fad85ceb60ad9f4180f0ab3a", "11")
 >> miner.start(1) # wait until mine process starts
 >> personal.unlockAccount("05f4172fda1cf398fad85ceb60ad9f4180f0ab3a", "11")
-# press ctrl + b + d to detach the session # For Mac, command + b + d 
+# press ctrl + b + d to detach the session
 ```
 
 Now you are ready to run the experiment!
@@ -95,11 +91,8 @@ You can run EvoMasterWB, EvoMasterBB, RESTler, RESTest, RestTestGen, bBOXRT, Sch
 The possible services are cwa-verification, erc20-rest-service, features-service, genome-nexus, languagetool, market, ncs, news, ocvn, person-controller, problem-controller, project-tracking-system, proxyporint, rest-study, restcountries, scout-api, scs, spring-batch-rest, spring-boot-sample-app, and user-management through our python script.
 You can pick any free port number for the port name. The port number is for collecting the achieved code coverage.
 Before run the script, make sure you are using the virtualenv.
-Also, you should not remove previous sessions if you have. You can refer to `Stop Session` section for this information.
-
 ```
-source venv/bin/activate
-python run_tool.py {tool_name} {service_name} {time_limit}
+python3 run_tool.py {tool_name} {service_name} {time_limit}
 ```
 
 ### Generate a report.
@@ -112,17 +105,16 @@ python3 report.py {port number} {service name}
 ```
 
 The report has seven rows and three columns. 
-The first six rows show the coverage achieved in 10, 20, 30, 40, 50, and an hour. For these rows, each column shows the percentage of achieved line, branch, and method coverage.
+The first row to sixth row stands for the time (10 min, 20 min, 30 min, 40 min, 50 min, 60 min). For these rows, each column stands for the percentage of achieved line, branch, and method coverage.
 The last row stands for the found error. The columns are the number of found error, unique error, and library error.
 You can compare the result to our result in the paper!
 
-### Stop session
+### Stop service
 
-Users can stop service using the following command. 
+Users can stop service using the following command.
 
 ```
-tmux ls # To find the session lists
-python3 stop_service.py {session name}
+python3 stop_service.py {service name}
 ```
 
 ### Result
