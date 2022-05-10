@@ -8,7 +8,7 @@ def whitebox(port):
     timeout = time.time() + 60 * 60 * float(time_limit)
     while time.time() < timeout:
         subprocess.run("rm -rf " + service, shell=True)
-        subprocess.run("java -jar evomaster.jar --sutControllerPort " + str(port) + " --maxTime " + time_limit + "h --outputFolder " + service, shell=True)
+        subprocess.run("java -jar evomaster.jar --sutControllerPort " + str(port) + " --maxTime 10m --outputFolder " + service, shell=True)
 
 
 def blackbox(swagger, port):
@@ -18,7 +18,7 @@ def blackbox(swagger, port):
             subprocess.run("dredd " + swagger + ' http://localhost:' + str(port), shell=True)
         elif tool == "evomaster-blackbox":
             subprocess.run("rm -rf " + service, shell=True)
-            subprocess.run("java -jar evomaster.jar --blackBox true --bbSwaggerUrl " + swagger + " --bbTargetUrl http://localhost:" + str(port) + " --outputFormat JAVA_JUNIT_4 --maxTime " + time_limit + "h --outputFolder " + service, shell=True)
+            subprocess.run("java -jar evomaster.jar --blackBox true --bbSwaggerUrl " + swagger + " --bbTargetUrl http://localhost:" + str(port) + " --outputFormat JAVA_JUNIT_4 --maxTime 6m --outputFolder " + service, shell=True)
         elif tool == "restler":
             basedir = os.path.join(curdir, "restler_" + service)
             restler_home = os.path.join(curdir, "restler/restler_bin/restler/Restler.dll")
