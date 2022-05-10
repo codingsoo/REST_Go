@@ -102,7 +102,7 @@ python3 report.py {port number} {service name}
 
 The report has seven rows and three columns. 
 The first six rows show the coverage results achieved in time obtained from 10, 20, 30, 40, 50, and 60 minutes. In each of these rows, the columns show, in percentage, the line, branch, and method coverage achieved. The last row presents the errors found with the columns showing the number of found errors, unique errors, and library errors.
-You can compare this result to our result in the paper!
+You can compare this result to our result in `Result` section.
 
 ### Stop service
 
@@ -113,6 +113,8 @@ python3 stop_service.py {service name}
 ```
 
 ### Result
+
+You can compare your result to our result below. Since the tools have randomness, you may have a slightly different result from us. We run each tool ten times and get their average.
 
 ![res](images/figure_all.png)
 
