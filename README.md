@@ -74,7 +74,7 @@ python run_small.py restler 10200
 python report_small.py 10200
 ```
 
-If you check the data/project-tracking-system/res.csv, you will see the sixth row for 1-hour code coverage (which should be something similar to "35%, 7.3%, 4.7%") and the seventh row for the number of bugs found (which should be something similar to "35, 7, 5").
+If you check the data/project-tracking-system/res.csv, you will see the sixth row for six minutes code coverage (which should be something similar to "35%, 7.3%, 4.7%") and the seventh row for the number of bugs found (which should be something similar to "35, 7, 5").
 
 ## Detailed Description
 
