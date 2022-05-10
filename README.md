@@ -48,10 +48,10 @@ We provide a python script which automatically generates a report for the experi
 python3 report_small.py {port_number}
 ```
 
-You can see the result in data/{service name}/res.csv!
-You can also find the detailed error message and time log in data/{service name}/error.json and data/{service name}/time.json.
-The report has seven rows and three columns. 
-The first row to the sixth row stands for the time (1 min, 2 min, 3 min, 4 min, 5 min, 6 min). For these rows, each column stands for the percentage of achieved line, branch, and method coverage.
+You can see the result in data/project-tracking-system/res.csv!
+You can also find the detailed error message and time log in data/project-tracking-system/error.json and data/project-tracking-system/time.json.
+The data/project-tracking-system/res.csv has seven rows and three columns. 
+The first six rows show the coverage achieved in 1, 2, 3, 4, 5, and 6 minutes. For these rows, each column shows the percentage of achieved line, branch, and method coverage.
 The last row stands for the found error. The columns are the number of found errors, unique errors, and library errors.
 
 ### Stop session
@@ -112,7 +112,7 @@ python3 report.py {port number} {service name}
 ```
 
 The report has seven rows and three columns. 
-The first row to sixth row stands for the time (10 min, 20 min, 30 min, 40 min, 50 min, 60 min). For these rows, each column stands for the percentage of achieved line, branch, and method coverage.
+The first six rows show the coverage achieved in 10, 20, 30, 40, 50, and an hour. For these rows, each column shows the percentage of achieved line, branch, and method coverage.
 The last row stands for the found error. The columns are the number of found error, unique error, and library error.
 You can compare the result to our result in the paper!
 
