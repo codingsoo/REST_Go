@@ -9,12 +9,9 @@ def run_service(service_path, class_name):
     with open(service_path + "/run.sh", 'w') as f:
         f.write("java -Djdk.attach.allowAttachSelf=true " + cov + " -cp target/classes:target/test-classes:" + cp + ' ' + class_name + " > " + base + "/log_" + cov_port + ".txt")
     if name == "cwa-verification" or name == "market" or name == "project-tracking-system":
-        subprocess.run(". ./java11.env && cd " + service_path + " && tmux new-session -d -s " + name + " 'sh run.sh'", shell=True)
+        subprocess.run(". ./java11.env && cd " + service_path + " && tmux new-session -d -s " + name + " 'sudo sh run.sh'", shell=True)
     else:
-        if name == "ocvn":
-            subprocess.run(". ./java8.env && cd " + service_path + " && tmux new-session -d -s " + name + " 'sudo sh run.sh'", shell=True)
-        else:
-            subprocess.run(". ./java8.env && cd " + service_path + " && tmux new-session -d -s " + name + " 'sh run.sh'", shell=True)
+        subprocess.run(". ./java8.env && cd " + service_path + " && tmux new-session -d -s " + name + " 'sudo sh run.sh'", shell=True)
 
 
 if __name__ == "__main__":
