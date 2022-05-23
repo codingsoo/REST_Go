@@ -40,7 +40,7 @@ def blackbox(swagger, port):
             subprocess.run(run + api_file, shell=True)
         elif tool == "schemathesis":
             run = "schemathesis run " + swagger
-            options = " --hypothesis-database=none --stateful=links --request-timeout 5000 --validate-schema False --base-url http://localhost:" + str(port)
+            options = " --hypothesis-database=none --checks all --stateful=links --request-timeout 5000 --validate-schema False --base-url http://localhost:" + str(port)
             subprocess.run(run + options, shell=True)
         elif tool == "tcases":
             subprocess.run("rm -rf ./tcases_" + service, shell=True)
