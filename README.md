@@ -11,7 +11,7 @@ We show how to use the REST-API testing tools used in our study to test the proj
 
 We used Google Cloud e2-standard-4 machines running Ubuntu 20.04 for this project, but a Linux environment with the software listed below installed would work. Note that the setup script is tested in Google Cloud e2-standard-4 (Ubuntu 20.04).
 
-- Required software: Java8, Java11, Git, Sudo, Wget, zip, unzip, MVN 3.5, Gradle 6.7, Python3.8-pip, Virtualenv, NodeJS v10.19, and Docker 20.10. 
+- Required software: Dotnet 5, Java8, Java11, Git, Sudo, Wget, zip, unzip, MVN 3.5, Gradle 6.7, Python3.8-pip, Virtualenv, NodeJS v10.19, and Docker 20.10. 
 
 ### Setup
 
