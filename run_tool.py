@@ -66,10 +66,6 @@ if __name__ == "__main__":
     print("Service started in the background. To check or kill the session, please see README file.")
     time.sleep(60)
 
-    subprocess.run("tmux new -d -s small_cov 'sh get_cov.sh " + str(port) + "'", shell=True)
-    print("We are getting coverage now.")
-    time.sleep(60)
-
     if service == "features-service":
         if tool == "evomaster-whitebox":
             whitebox(40101)
