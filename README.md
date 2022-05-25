@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6579107.svg)](https://doi.org/10.5281/zenodo.6579107)
+
 # Automated Test Generation for REST APIs: No Time to Rest Yet
 
 ## Getting Started
