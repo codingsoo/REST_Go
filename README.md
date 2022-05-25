@@ -132,6 +132,14 @@ Users can stop a service using the following command.
 python3 stop_service.py {service name}
 ```
 
+### Run all steps 
+
+We provide a script to run a tool for all services. The run.py runs all steps except for setup and report.
+
+```
+python3 run.py {tool name}
+```
+
 ### Result
 
 You can compare your result to our result below. This figure, although not shown in the paper, is generated based on the same experiment results. Since the tools have randomness, your results may be different from ours. Note that we ran each tool ten times and computed the average.
