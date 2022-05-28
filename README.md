@@ -142,7 +142,7 @@ python3 run.py {tool name}
 
 ### Result
 
-You can compare your result to our result below. This figure, although not shown in the paper, is generated based on the same experiment results. Since the tools have randomness, your results may be different from ours. Note that we ran each tool ten times and computed the average. You can also check the raw data ![here](https://docs.google.com/spreadsheets/d/1vcgwpO8BatJTz-pWDJmpU67Y8-WHx9JoqXNRY94R3M4/edit?usp=sharing).
+You can compare your result to our result below. This figure, although not shown in the paper, is generated based on the same experiment results. Since the tools have randomness, your results may be different from ours. Note that we ran each tool ten times and computed the average. You can also check the raw data [here](https://docs.google.com/spreadsheets/d/1vcgwpO8BatJTz-pWDJmpU67Y8-WHx9JoqXNRY94R3M4/edit?usp=sharing).
 
 ![res](images/figure_all.png)
 
