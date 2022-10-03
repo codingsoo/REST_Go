@@ -147,3 +147,12 @@ You can compare your result to our result below. This figure, although not shown
 ![res](images/figure_all.png)
 
 1: Evo-White, 2: RESTler, 3: RestTestGen, 4: RESTest, 5: bBOXRT , 6: Schemathesis, 7: Tcases, 8: Dredd, 9: Evo-Black, 10: APIFuzzer, A: Features-Service, B: Languagetool, C: NCS, D: News, E: OCVN, F: ProxyPrint, G: Restcountries, H: Scout-API, I: SCS, J: ERC20-Rest-Service, K: Genome-Nexus, L: Person-Controller, M: Problem-Controller, N: Rest-Study, O: Spring-Batch-Rest, P: Spring-Boot-Sample-App, Q: User-Management, R: CWA-Verification, S: Market, T: Project-Tracking-System. The color of the bar represents the running time - 10 min: ![10min](images/10min.png), 20 min: ![20min](images/20min.png), 30 min: ![30min](images/30min.png), 40 min: ![40min](images/40min.png), 50 min: ![50min](images/50min.png), 60 min: ![1h](images/1h.png), and 24 hr: ![24h](images/24h.png).
+
+### Add authorization header
+
+Some APIs can have an authorization header to increase the API request limit. We recommend to use [mitmproxy](https://mitmproxy.org/) to add the authorization header.
+You need to add your token in token.py and run the following command with the service URL and proxy URL. Mitmproxy accepts the request and forwards it to the specified upstream server.
+
+```
+mitmproxy --mode reverse:SERVICE_URL -p PROXY_PORT_NUMBER -s token.py
+```
