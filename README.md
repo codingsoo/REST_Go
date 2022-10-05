@@ -151,8 +151,20 @@ You can compare your result to our result below. This figure, although not shown
 ### Add authorization header
 
 Some APIs can have an authorization header to increase the API request limit. We recommend to use [mitmproxy](https://mitmproxy.org/) to add the authorization header.
-You need to add your token in token.py and run the following command with the service URL and proxy URL. Mitmproxy accepts the request and forwards it to the specified upstream server.
+You need to add your token in authToken.py and run the following command with the service URL and proxy URL. Mitmproxy accepts the request and forwards it to the specified upstream server.
 
 ```
-mitmproxy --mode reverse:SERVICE_URL -p PROXY_PORT_NUMBER -s token.py
+mitmproxy --mode reverse:SERVICE_URL -p PROXY_PORT_NUMBER -s authToken.py
+```
+
+### Proof of Concepts
+
+We provide two proof-of-concept prototypes that help to find example value, inter-parameter dependency, and linked response parameter for each request parameter.
+proof-of-concept1.py takes parameter description and parameter names in the operation and produce example values and inter-parameter dependency.
+proof-of-concept2.py takes request parameter names and response parameter names in the specification and produce request parameter and response parameter pairs.
+Each request parameter name has three response parameter names that are top three similar names.
+
+```
+python3 proof-of-concept1.py {parameter description} {parameter names}
+python3 proof-of-concept2.py {request parameter names} {response parameter names}
 ```
