@@ -18,6 +18,26 @@ We currently found 11 open source REST API testing projects.
 10. [RestCT](https://github.com/GIST-NJU/RestCT): Combinatorial testing-based approach (currently being updated for compatibility)
 11. Morest: Dynamically updates RESTful-service Property Graph (RPG) to model API and object schema information (source code obtained from authors and placed in the `tool` directory)
 
+## Services
+
+We have identified 15 open-source Java-based RESTful services that are not considered toy projects, such as simple repositories used in online classes. Additionally, we have excluded services with broken dependencies or unavailable repositories.
+
+1. [Genome Nexus](https://github.com/genome-nexus/genome-nexus)
+2. [ERC-20 RESTful service](https://github.com/web3labs/erc20-rest-service)
+3. [Simple internet-market](https://github.com/aleksey-lukyanets/market)
+4. [Features Model MicroService](https://github.com/JavierMF/features-service)
+5. [proxyprint-kitchen](https://github.com/ProxyPrint/proxyprint-kitchen)
+6. [CatWatch](https://github.com/zalando-incubator/catwatch)
+7. [OCVN](https://github.com/devgateway/ocvn)
+8. [REST Countries](https://github.com/apilayer/restcountries)
+9. [LanguageTool](https://github.com/languagetool-org/languagetool)
+10. [Corona-Warn-App Verification Server](https://github.com/corona-warn-app/cwa-verification-server)
+11. [Sistema de Gestão Hospitalar](https://github.com/ValchanOficial/GestaoHospital)
+12. [YouTubeMock](https://github.com/opensourcingapis/YouTubeMock)
+13. [Ohsome API](https://github.com/GIScience/ohsome-api)
+14. [Project Tracking System](https://github.com/SelimHorri/project-tracking-system-backend-app)
+15. [User Management Microservice](https://github.com/andreagiassi/microservice-rbac-user-management)
+
 ## Citation
 
 If you use REST_GO in your research or find it helpful, please consider citing our paper. Here's the BibTeX entry for the paper:
