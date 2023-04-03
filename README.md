@@ -1,8 +1,38 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6579151.svg)](https://doi.org/10.5281/zenodo.6579151)
+# REST_GO: A Collection of Tools and Resources for REST API Testing
 
-# Automated Test Generation for REST APIs: No Time to Rest Yet
+This repository offers a curated collection of open-source tools, resources, and repositories for automated test generation in REST APIs. Our objective is to provide a comprehensive list that assists researchers and practitioners in the field of REST API testing. If you find this repository valuable, please consider citing our paper "Automated Test Generation for REST APIs: No Time to Rest Yet".
 
-## Getting Started
+## Tools
+
+We currently found 11 open source REST API testing projects.
+
+1. [EvoMaster](https://github.com/EMResearch/EvoMaster): Evolutionary Algorithm and Dynamic Program Analysis approach
+2. [RESTler](https://github.com/microsoft/restler-fuzzer): Identifies producer-consumer dependencies among request types using OpenAPI definition
+3. [RestTestGen](https://github.com/SeUniVr/RestTestGen): Generates valid call sequences by constructing and traversing an Operation Dependency Graph (ODG) based on API dependencies
+4. [RESTest](https://github.com/isa-group/RESTest): Supports inter-parameter dependency specification and analysis using constraint-based testing
+5. [bBOXRT]( https://eden.dei.uc.pt/~cnl/papers/2020-access.zip): Robustness testing tool for REST services, generating invalid inputs combined with valid parameters based on a service description document
+6. [Schemathesis](https://github.com/schemathesis/schemathesis.git): Property-based testing approach
+7. [Tcases](https://github.com/Cornutum/tcases): Models input space using operation's input and output for comprehensive testing
+8. [Dredd](https://github.com/apiaryio/dredd): Validates responses based on status codes, headers, and body payloads using sample values from the specification and dummy values
+9. [APIFuzzer](https://github.com/KissPeter/APIFuzzer): Employs fuzzing with random values and mutations
+10. [RestCT](https://github.com/GIST-NJU/RestCT): Combinatorial testing-based approach (currently being updated for compatibility)
+11. Morest: Dynamically updates RESTful-service Property Graph (RPG) to model API and object schema information (source code obtained from authors and placed in the `tool` directory)
+
+## Citation
+
+If you use REST_GO in your research or find it helpful, please consider citing our paper. Here's the BibTeX entry for the paper:
+
+```bibtex
+@inproceedings{kim2022automated,
+  title={Automated test generation for rest apis: No time to rest yet},
+  author={Kim, Myeongsoo and Xin, Qi and Sinha, Saurabh and Orso, Alessandro},
+  booktitle={Proceedings of the 31st ACM SIGSOFT International Symposium on Software Testing and Analysis},
+  pages={289--301},
+  year={2022}
+}
+```
+
+## Reproduce the result of our paper "Automated Test Generation for REST APIs: No Time to Rest Yet".
 
 ### Check the basic functionality
 

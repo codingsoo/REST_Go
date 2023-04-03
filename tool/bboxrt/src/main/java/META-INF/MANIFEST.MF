@@ -1,0 +1,57 @@
+Manifest-Version: 1.0
+Class-Path: jsr305-3.0.1.jar jetty-server-9.2.28.v20190418.jar istack-
+ commons-runtime-3.0.10.jar commons-codec-1.11.jar libphonenumber-8.0.
+ 0.jar resteasy-client-api-4.4.1.Final.jar commons-math3-3.6.1.jar swa
+ gger-core-1.6.0.jar resteasy-client-4.4.1.Final.jar swagger-parser-v2
+ -converter-2.0.16.jar automaton-1.11-8.jar jackson-databind-2.10.1.ja
+ r generex-1.0.2.jar httpurlconnection-executor-1.16.2.jar jakarta.act
+ ivation-api-1.2.1.jar reactive-streams-1.0.2.jar json-20160212.jar ur
+ i-template-0.9.jar swagger-compat-spec-parser-1.0.48.jar jaxrs-api-3.
+ 0.12.Final.jar xmlbeans-3.1.0.jar jboss-jaxrs-api_2.1_spec-2.0.1.Fina
+ l.jar javax.interceptor-api-1.2.jar guava-20.0.jar jetty-servlet-9.2.
+ 28.v20190418.jar resteasy-jaxrs-3.9.3.Final.jar optional-1.13.jar val
+ idation-api-2.0.1.Final.jar commons-collections4-4.3.jar snakeyaml-1.
+ 24.jar activation-1.1.1.jar oauth2-essentials-0.18.jar org.osgi.annot
+ ation.versioning-1.0.0.jar jboss-annotations-api_1.3_spec-1.0.1.Final
+ .jar jcip-annotations-1.0-1.jar jboss-logging-3.3.2.Final.jar http-cl
+ ient-basics-0.20.jar httpcore-4.4.12.jar javax.servlet-api-3.1.0.jar 
+ apache-mime4j-dom-0.7.2.jar slf4j-log4j12-1.7.5.jar commons-lang3-3.7
+ .jar jackson-core-2.11.0.jar jopt-simple-5.0.3.jar jetty-util-9.2.28.
+ v20190418.jar swagger-core-2.1.0.jar swagger-annotations-1.6.0.jar po
+ i-4.1.0.jar jakarta.activation-1.2.1.jar resteasy-jackson2-provider-4
+ .4.1.Final.jar http-client-types-0.20.jar rgxgen-1.0.jar swagger-pars
+ er-2.0.16.jar http-executor-decorators-0.20.jar swagger-parser-core-2
+ .0.16.jar jetty-webapp-9.2.28.v20190418.jar jboss-jaxb-api_2.3_spec-1
+ .0.1.Final.jar slf4j-ext-1.7.28.jar swagger-models-1.6.0.jar jaxb-run
+ time-2.3.3-b01.jar jetty-io-9.2.28.v20190418.jar msg-simple-1.1.jar j
+ etty-http-9.2.28.v20190418.jar jackson-dataformat-yaml-2.10.1.jar swa
+ gger-models-2.1.0.jar handlebars-helpers-4.0.7.jar rhino-1.7R4.jar ja
+ vassist-3.26.0-GA.jar jetty-security-9.2.28.v20190418.jar stax2-api-4
+ .2.jar jackson-jaxrs-base-2.10.0.jar jackson-annotations-2.10.1.jar j
+ etty-xml-9.2.28.v20190418.jar xmlunit-placeholders-2.6.2.jar commons-
+ logging-1.2.jar jakarta.validation-api-2.0.2.jar http-client-headers-
+ 0.20.jar poi-ooxml-schemas-4.1.0.jar javax.inject-1.jar slf4j-api-1.7
+ .5.jar annotations-17.0.0.jar apache-mime4j-storage-0.7.2.jar txw2-2.
+ 3.3-b01.jar btf-1.2.jar xmlunit-legacy-2.6.2.jar apache-mime4j-core-0
+ .7.2.jar json-schema-core-1.2.8.jar commons-compress-1.18.jar handleb
+ ars-4.0.7.jar swagger-annotations-2.1.0.jar javax.el-api-3.0.0.jar wi
+ remock-2.25.1.jar accessors-smart-1.2.jar json-smart-2.3.jar log4j-1.
+ 2.17.jar jaxb-api-2.3.0.jar http-executor-commons-1.16.2.jar jackson-
+ dataformat-xml-2.10.1.jar jakarta.xml.bind-api-2.3.2.jar microprofile
+ -config-api-1.3.jar jetty-continuation-9.2.28.v20190418.jar resteasy-
+ jaxb-provider-4.4.1.Final.jar poi-ooxml-4.1.0.jar smallrye-config-1.3
+ .9.jar http-client-essentials-1.16.2.jar swagger-parser-1.0.48.jar jo
+ da-time-2.10.5.jar httpclient-4.5.10.jar base64-2.3.9.jar rfc5545-dat
+ etime-0.2.4.jar resteasy-core-spi-4.4.1.Final.jar cdi-api-2.0.SP1.jar
+  json-path-2.4.0.jar resteasy-multipart-provider-4.4.1.Final.jar jaka
+ rta.mail-1.6.4.jar resteasy-core-4.4.1.Final.jar jackson-datatype-jsr
+ 310-2.10.1.jar commons-io-2.4.jar curvesapi-1.06.jar json-patch-1.9.j
+ ar jackson-module-jaxb-annotations-2.10.1.jar jetty-servlets-9.2.28.v
+ 20190418.jar jackson-jaxrs-json-provider-2.10.0.jar xmlunit-core-2.6.
+ 2.jar zjsonpatch-0.4.4.jar commons-fileupload-1.4.jar scribejava-core
+ -6.9.0.jar jackson-coreutils-1.6.jar antlr4-runtime-4.7.1.jar jems-1.
+ 25.jar json-schema-validator-2.2.8.jar mailapi-1.4.3.jar rfc3986-uri-
+ 0.8.1.jar scribejava-apis-6.9.0.jar woodstox-core-6.0.2.jar asm-7.0.j
+ ar swagger-parser-v3-2.0.16.jar
+Main-Class: pt.uc.dei.rest_api_robustness_tester.Main
+
