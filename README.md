@@ -20,7 +20,7 @@ We currently found 11 open source REST API testing projects.
 
 ## Services
 
-We have identified 15 open-source Java-based RESTful services that are not considered toy projects, such as simple repositories used in online classes. Additionally, we have excluded services with broken dependencies or unavailable repositories.
+We have identified 20 open-source Java-based RESTful services. We have added more services and excluded services with broken dependencies or unavailable repositories.
 
 1. [Genome Nexus](https://github.com/genome-nexus/genome-nexus)
 2. [ERC-20 RESTful service](https://github.com/web3labs/erc20-rest-service)
@@ -28,15 +28,22 @@ We have identified 15 open-source Java-based RESTful services that are not consi
 4. [Features Model MicroService](https://github.com/JavierMF/features-service)
 5. [proxyprint-kitchen](https://github.com/ProxyPrint/proxyprint-kitchen)
 6. [CatWatch](https://github.com/zalando-incubator/catwatch)
-7. [OCVN](https://github.com/devgateway/ocvn)
+7. [Spring Boot Actuator](https://github.com/callicoder/spring-boot-actuator-demo)
 8. [REST Countries](https://github.com/apilayer/restcountries)
 9. [LanguageTool](https://github.com/languagetool-org/languagetool)
 10. [Corona-Warn-App Verification Server](https://github.com/corona-warn-app/cwa-verification-server)
-11. [Sistema de Gestão Hospitalar](https://github.com/ValchanOficial/GestaoHospital)
+11. [News](https://github.com/arcuri82/testing_security_development_enterprise_systems)
 12. [YouTubeMock](https://github.com/opensourcingapis/YouTubeMock)
 13. [Ohsome API](https://github.com/GIScience/ohsome-api)
 14. [Project Tracking System](https://github.com/SelimHorri/project-tracking-system-backend-app)
 15. [User Management Microservice](https://github.com/andreagiassi/microservice-rbac-user-management)
+16. [NCS](https://github.com/EMResearch/EMB/tree/master/jdk_8_maven/cs/rest/artificial/ncs)
+17. [SCS](https://github.com/EMResearch/EMB/tree/master/jdk_8_maven/cs/rest/artificial/scs)
+18. [Person Controller](https://github.com/MaBeuLux88/java-spring-boot-mongodb-starter)
+19. [Problem & Project Controller](https://github.com/phantasmicmeans/spring-boot-restful-api-example)
+20. [Spring Batch REST](https://github.com/chrisgleissner/spring-batch-rest)
+
+Please note that CatWatch and Corona-Warn-App Verification Server have API rate limit (60 and 1000 per an hour each). 
 
 ## Citation
 
