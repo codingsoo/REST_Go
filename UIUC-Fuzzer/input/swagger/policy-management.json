@@ -1,0 +1,1079 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "PolicyManagement API",
+    "description": "This API allows LM staff to manage the policies of their customers.",
+    "license": {
+      "name": "Apache 2.0"
+    },
+    "version": "v1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8090",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/policies/{policyId}": {
+      "get": {
+        "tags": [
+          "policy-information-holder"
+        ],
+        "summary": "Get a single policy.",
+        "operationId": "getPolicy",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "the policy's unique id",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/PolicyId"
+            }
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "description": "a comma-separated list of the fields that should be expanded in the response",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "policy-information-holder"
+        ],
+        "summary": "Update an existing policy.",
+        "operationId": "updatePolicy",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "the policy's unique id",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/PolicyId"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePolicyRequestDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "policy-information-holder"
+        ],
+        "summary": "Delete an existing policy.",
+        "operationId": "deletePolicy",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "the policy's unique id",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/PolicyId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/riskfactor/compute": {
+      "post": {
+        "tags": [
+          "risk-computation-service"
+        ],
+        "summary": "Computes the risk factor for a given customer.",
+        "operationId": "computeRiskFactor",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RiskFactorRequestDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RiskFactorResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/policies": {
+      "get": {
+        "tags": [
+          "policy-information-holder"
+        ],
+        "summary": "Get all policies, newest first.",
+        "operationId": "getPolicies",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "the maximum number of policies per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "the offset of the page's first policy",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "description": "a comma-separated list of the fields that should be expanded in the response",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedPolicyResponseDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "policy-information-holder"
+        ],
+        "summary": "Create a new policy.",
+        "operationId": "createPolicy",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePolicyRequestDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insurance-quote-requests/{id}": {
+      "get": {
+        "tags": [
+          "insurance-quote-request-processing-resource"
+        ],
+        "summary": "Get a specific Insurance Quote Request.",
+        "operationId": "getInsuranceQuoteRequest",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "the insurance quote request's unique id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/InsuranceQuoteRequestDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "insurance-quote-request-processing-resource"
+        ],
+        "summary": "Updates the status of an existing Insurance Quote Request",
+        "operationId": "respondToInsuranceQuoteRequest",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "the insurance quote request's unique id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InsuranceQuoteResponseDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/InsuranceQuoteRequestDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insurance-quote-requests": {
+      "get": {
+        "tags": [
+          "insurance-quote-request-processing-resource"
+        ],
+        "summary": "Get all Insurance Quote Requests.",
+        "operationId": "getInsuranceQuoteRequests",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/InsuranceQuoteRequestDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customers": {
+      "get": {
+        "tags": [
+          "customer-information-holder"
+        ],
+        "summary": "Get all customers.",
+        "operationId": "getCustomers",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "search terms to filter the customers by name",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "the maximum number of customers per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "the offset of the page's first customer",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedCustomerResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customers/{customerIdDto}": {
+      "get": {
+        "tags": [
+          "customer-information-holder"
+        ],
+        "summary": "Get customer with a given customer id.",
+        "operationId": "getCustomer",
+        "parameters": [
+          {
+            "name": "customerIdDto",
+            "in": "path",
+            "description": "the customer's unique id",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/CustomerIdDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customers/{customerIdDto}/policies": {
+      "get": {
+        "tags": [
+          "customer-information-holder"
+        ],
+        "summary": "Get a customer's policies.",
+        "operationId": "getPolicies_1",
+        "parameters": [
+          {
+            "name": "customerIdDto",
+            "in": "path",
+            "description": "the customer's unique id",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/CustomerIdDto"
+            }
+          },
+          {
+            "name": "expand",
+            "in": "query",
+            "description": "a comma-separated list of the fields that should be expanded in the response",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PolicyDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/error": {
+      "get": {
+        "tags": [
+          "error-controller"
+        ],
+        "operationId": "handleError_6",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "error-controller"
+        ],
+        "operationId": "handleError_1",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "error-controller"
+        ],
+        "operationId": "handleError_3",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "error-controller"
+        ],
+        "operationId": "handleError_2",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "options": {
+        "tags": [
+          "error-controller"
+        ],
+        "operationId": "handleError_5",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "head": {
+        "tags": [
+          "error-controller"
+        ],
+        "operationId": "handleError",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "error-controller"
+        ],
+        "operationId": "handleError_4",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PolicyId": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        }
+      },
+      "CreatePolicyRequestDto": {
+        "required": [
+          "policyType"
+        ],
+        "type": "object",
+        "properties": {
+          "customerId": {
+            "type": "string"
+          },
+          "policyPeriod": {
+            "$ref": "#/components/schemas/PolicyPeriodDto"
+          },
+          "policyType": {
+            "type": "string"
+          },
+          "deductible": {
+            "$ref": "#/components/schemas/MoneyAmountDto"
+          },
+          "policyLimit": {
+            "$ref": "#/components/schemas/MoneyAmountDto"
+          },
+          "insurancePremium": {
+            "$ref": "#/components/schemas/MoneyAmountDto"
+          },
+          "insuringAgreement": {
+            "$ref": "#/components/schemas/InsuringAgreementDto"
+          }
+        },
+        "description": "the policy that is to be added"
+      },
+      "InsuringAgreementDto": {
+        "required": [
+          "agreementItems"
+        ],
+        "type": "object",
+        "properties": {
+          "agreementItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InsuringAgreementItemDto"
+            }
+          }
+        }
+      },
+      "InsuringAgreementItemDto": {
+        "required": [
+          "description",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "MoneyAmountDto": {
+        "required": [
+          "amount",
+          "currency"
+        ],
+        "type": "object",
+        "properties": {
+          "amount": {
+            "maximum": 1000000000000,
+            "exclusiveMaximum": true,
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "type": "number"
+          },
+          "currency": {
+            "type": "string"
+          }
+        }
+      },
+      "PolicyPeriodDto": {
+        "required": [
+          "endDate",
+          "startDate"
+        ],
+        "type": "object",
+        "properties": {
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Link": {
+        "type": "object",
+        "properties": {
+          "rel": {
+            "type": "string"
+          },
+          "href": {
+            "type": "string"
+          },
+          "hreflang": {
+            "type": "string"
+          },
+          "media": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "deprecation": {
+            "type": "string"
+          },
+          "profile": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "PolicyDto": {
+        "type": "object",
+        "properties": {
+          "policyId": {
+            "type": "string"
+          },
+          "customer": {
+            "type": "object"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "policyPeriod": {
+            "$ref": "#/components/schemas/PolicyPeriodDto"
+          },
+          "policyType": {
+            "type": "string"
+          },
+          "deductible": {
+            "$ref": "#/components/schemas/MoneyAmountDto"
+          },
+          "policyLimit": {
+            "$ref": "#/components/schemas/MoneyAmountDto"
+          },
+          "insurancePremium": {
+            "$ref": "#/components/schemas/MoneyAmountDto"
+          },
+          "insuringAgreement": {
+            "$ref": "#/components/schemas/InsuringAgreementDto"
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            }
+          },
+          "_expandable": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "RiskFactorRequestDto": {
+        "type": "object",
+        "properties": {
+          "birthday": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "postalCode": {
+            "type": "string"
+          }
+        },
+        "description": "the request containing relevant customer attributes (e.g., postal code, birthday)"
+      },
+      "RiskFactorResponseDto": {
+        "type": "object",
+        "properties": {
+          "riskFactor": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "InsuranceQuoteResponseDto": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "expirationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "insurancePremium": {
+            "$ref": "#/components/schemas/MoneyAmountDto"
+          },
+          "policyLimit": {
+            "$ref": "#/components/schemas/MoneyAmountDto"
+          }
+        },
+        "description": "the response that contains a new insurance quote if the request has been accepted"
+      },
+      "AddressDto": {
+        "type": "object",
+        "properties": {
+          "streetAddress": {
+            "type": "string"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          }
+        }
+      },
+      "CustomerInfoDto": {
+        "type": "object",
+        "properties": {
+          "customerId": {
+            "type": "string"
+          },
+          "firstname": {
+            "type": "string"
+          },
+          "lastname": {
+            "type": "string"
+          },
+          "contactAddress": {
+            "$ref": "#/components/schemas/AddressDto"
+          },
+          "billingAddress": {
+            "$ref": "#/components/schemas/AddressDto"
+          }
+        }
+      },
+      "InsuranceOptionsDto": {
+        "type": "object",
+        "properties": {
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "insuranceType": {
+            "type": "string"
+          },
+          "deductible": {
+            "$ref": "#/components/schemas/MoneyAmountDto"
+          }
+        }
+      },
+      "InsuranceQuoteDto": {
+        "required": [
+          "expirationDate",
+          "insurancePremium",
+          "policyLimit"
+        ],
+        "type": "object",
+        "properties": {
+          "expirationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "insurancePremium": {
+            "$ref": "#/components/schemas/MoneyAmountDto"
+          },
+          "policyLimit": {
+            "$ref": "#/components/schemas/MoneyAmountDto"
+          }
+        }
+      },
+      "InsuranceQuoteRequestDto": {
+        "required": [
+          "customerInfo",
+          "insuranceOptions"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "statusHistory": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RequestStatusChangeDto"
+            }
+          },
+          "customerInfo": {
+            "$ref": "#/components/schemas/CustomerInfoDto"
+          },
+          "insuranceOptions": {
+            "$ref": "#/components/schemas/InsuranceOptionsDto"
+          },
+          "insuranceQuote": {
+            "$ref": "#/components/schemas/InsuranceQuoteDto"
+          },
+          "policyId": {
+            "type": "string"
+          }
+        }
+      },
+      "RequestStatusChangeDto": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "PaginatedPolicyResponseDto": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "policies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PolicyDto"
+            }
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            }
+          }
+        }
+      },
+      "CustomerDto": {
+        "type": "object",
+        "properties": {
+          "customerId": {
+            "type": "string"
+          },
+          "firstname": {
+            "type": "string"
+          },
+          "lastname": {
+            "type": "string"
+          },
+          "birthday": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "streetAddress": {
+            "type": "string"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "moveHistory": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AddressDto"
+            }
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            }
+          }
+        }
+      },
+      "PaginatedCustomerResponseDto": {
+        "type": "object",
+        "properties": {
+          "filter": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "customers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomerDto"
+            }
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            }
+          }
+        }
+      },
+      "CustomerIdDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
