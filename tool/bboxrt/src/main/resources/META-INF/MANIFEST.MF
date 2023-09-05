@@ -1,3 +1,0 @@
-Manifest-Version: 1.0
-Main-Class: pt.uc.dei.rest_api_robustness_tester.Main
-
