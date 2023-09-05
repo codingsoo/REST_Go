@@ -43,15 +43,41 @@ We have identified 20 open-source Java-based RESTful services:
 11. [Problem & Project Controller](https://github.com/phantasmicmeans/spring-boot-restful-api-example)
 12. [Project Tracking System](https://github.com/SelimHorri/project-tracking-system-backend-app)
 13. [proxyprint-kitchen](https://github.com/ProxyPrint/proxyprint-kitchen)
-14. RESTful web service study: Service Closed.
+14. RESTful web service study: This service is no longer accessible.
 15. [REST Countries](https://github.com/apilayer/restcountries)
 16. [SCS](https://github.com/EMResearch/EMB/tree/master/jdk_8_maven/cs/rest/artificial/scs)
-17. Scout API: Service Closed.
+17. Scout API: This service is no longer accessible.
 18. [Spring Boot Actuator](https://github.com/callicoder/spring-boot-actuator-demo)
 19. [Spring Batch REST](https://github.com/chrisgleissner/spring-batch-rest)
 20. [User Management Microservice](https://github.com/andreagiassi/microservice-rbac-user-management)
 
 Please note that Corona-Warn-App Verification Server has API rate limit 1000 per an hour now.
+
+#### Measuring Code Coverage
+
+For a precise measurement of code coverage, follow these steps:
+
+1. **Set Up the Tools**: Download the [Jacoco Agent](https://repo1.maven.org/maven2/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar) and [Jacoco CLI](https://repo1.maven.org/maven2/org/jacoco/org.jacoco.cli/0.8.7/org.jacoco.cli-0.8.7-nodeps.jar). These tools will aid in the measurement process.
+2. **Run the Project with Jacoco Agent**: Launch each project with the following option, replacing `{COVERAGE_PORT}` with your chosen port number:
+```
+-javaagent:org.jacoco.agent-0.8.7-runtime.jar=includes=*,output=tcpserver,port={COVERAGE_PORT},address=*,dumponexit=true -Dfile.encoding=UTF-8
+```
+3. **Run the Coverage Script**: Execute the `get_cov.sh` script:
+
+```
+sh get_cov.sh {COVERAGE_PORT}
+```
+
+This script will produce coverage files at 10-minute intervals over the span of an hour, resulting in files named:
+
+```
+10 minute: jacoco_{COVERAGE_PORT}_1.exec
+20 minute: jacoco_{COVERAGE_PORT}_2.exec
+30 minute: jacoco_{COVERAGE_PORT}_3.exec
+40 minute: jacoco_{COVERAGE_PORT}_4.exec
+50 minute: jacoco_{COVERAGE_PORT}_5.exec
+60 minute: jacoco_{COVERAGE_PORT}_6.exec
+```
 
 [//]: # (## Reproduce the result of our paper "Automated Test Generation for REST APIs: No Time to Rest Yet".)
 
