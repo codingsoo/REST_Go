@@ -54,6 +54,16 @@ We have identified 20 open-source Java-based RESTful services:
 20. [User Management Microservice](https://github.com/andreagiassi/microservice-rbac-user-management)
 
 We've collected all services' source codes in `services` directory and all specifications in `specifications` directory. 
+To use the services, please install the services (check `setup.sh` as a reference) and dependencies.
+Then, you can use the python script to run the services. Command Line Arguments:
+
+- SERVICE_NAME: The name of the service you want to run. possible names are: features-service, languagetool, ncs, news, ocvn, proxyprint, restcountries, scout-api, scs, erc20-rest-service, genome-nexus, person-controller, problem-controller, rest-study, spring-batch-rest, spring-boot-sample-app, user-management, cwa-verification, market, project-tracking-system
+- COVERAGE_PORT: The port for JaCoCo (Java Code Coverage Library).
+- WHITEBOX/BLACKBOX: The approach (either "whitebox" or "blackbox").
+
+```
+python3 run_service.py {SERVICE_NAME} {COVERAGE_PORT} {WHITEBOX/BLACKBOX}
+```
 
 #### Measuring Code Coverage
 
