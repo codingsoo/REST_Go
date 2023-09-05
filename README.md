@@ -1,4 +1,4 @@
-## 🛠️ REST_GO: Your Comprehensive Collection of REST API Testing Tools and RESTful Services
+## 🛠️ REST_GO: Comprehensive Collection of REST API Testing Tools & Services
 
 Welcome to **REST_GO**, a repository that collects REST API Testing Tools and RESTful Services. 
 
