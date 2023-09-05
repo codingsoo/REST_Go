@@ -38,26 +38,27 @@ paths = [
 ]
 
 port = sys.argv[1]
-name = sys.argv[2]
-k = 0
-for i in range(len(services)):
-    if name == services[i]:
-        k = i
+path = sys.argv[2]
+# name = sys.argv[2]
+# k = 0
+# for i in range(len(services)):
+#     if name == services[i]:
+#         k = i
+#
+# path = paths[k]
 
-path = paths[k]
-
-print(services[k] + " is processing....")
+print("Generating report")
 subdirs = [x[0] for x in os.walk(path)]
 class_files = []
 jacoco_command2 = ''
 
 for subdir in subdirs:
-    if services[k] in subdir and '/target/classes/' in subdir:
+    if path in subdir and '/target/classes/' in subdir:
         target_dir = subdir[:subdir.rfind('/target/classes/') + 15]
         if target_dir not in class_files:
             class_files.append(target_dir)
             jacoco_command2 = jacoco_command2 + ' --classfiles ' + target_dir
-    if services[k] in subdir and '/build/classes/' in subdir:
+    if path in subdir and '/build/classes/' in subdir:
         target_dir = subdir[:subdir.rfind('/build/classes/') + 14]
         if target_dir not in class_files:
             class_files.append(target_dir)
@@ -84,7 +85,7 @@ for f in files:
             count = 0
         if 'jacoco' in f and '.exec' in f:
             count = count + 1
-            jacoco_file = services[k] + '_' + str(count) + '.csv'
+            jacoco_file = 'jacoco_' + str(count) + '.csv'
             subprocess.run(jacoco_command1 + f + jacoco_command2 + jacoco_file, shell=True)
         elif 'log' in f:
             subprocess.call('split -l 10000000 ' + f, shell=True)
@@ -126,7 +127,7 @@ c_method = [0, 0, 0, 0, 0, 0]
 error = 0
 unique_err = 0
 crucial = 0
-mypath = os.path.join(curdir, "data/" + services[k])
+mypath = os.path.join(curdir, "result")
 if os.path.isdir(mypath):
     onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
     for dir_file in onlyfiles:
@@ -272,11 +273,10 @@ res = res + str(error) + ',' + str(unique_err) + ',' + str(crucial) + '\n'
 with open('res.csv', 'w') as f:
     f.write(res)
 
-
-subprocess.run("mkdir -p " + "data/" + services[k], shell=True)
-subprocess.call('mv res.csv ' + "data/" + services[k], shell=True)
-subprocess.call('mv *.csv ' + "data/" + services[k], shell=True)
-subprocess.call('mv error.json ' + "data/" + services[k], shell=True)
-subprocess.call('mv time.json ' + "data/" + services[k], shell=True)
-subprocess.call('mv jacoco*.exec ' + "data/" + services[k], shell=True)
-subprocess.call('mv log* ' + "data/" + services[k], shell=True)
+subprocess.run("mkdir -p " + "result", shell=True)
+subprocess.call('mv res.csv ' + "result", shell=True)
+subprocess.call('mv *.csv ' + "result", shell=True)
+subprocess.call('mv error.json ' + "result", shell=True)
+subprocess.call('mv time.json ' + "result", shell=True)
+subprocess.call('mv jacoco*.exec ' + "result", shell=True)
+subprocess.call('mv log* ' + "result", shell=True)

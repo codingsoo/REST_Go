@@ -79,6 +79,16 @@ This script will produce coverage files at 10-minute intervals over the span of 
 60 minute: jacoco_{COVERAGE_PORT}_6.exec
 ```
 
+#### Generating Coverage and Error Report
+
+After having the coverage result, run this command to generate the coverage and error report:
+
+```
+python3 report.py {COVERAGE_PORT} {SOURCE_CODE_LOCATION}
+```
+
+Please note that you need to have all the executable Jacoco files generated in the previous step in the same directory. It will generate a `report` directory with `error.json` that contains error report and `res.csv` that contains coverage report.
+
 [//]: # (## Reproduce the result of our paper "Automated Test Generation for REST APIs: No Time to Rest Yet".)
 
 [//]: # ()
