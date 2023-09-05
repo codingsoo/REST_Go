@@ -45,7 +45,7 @@ public class RunServer extends EmbeddedSutController {
     private MongoClient mongoClient;
 
 
-    private static final GenericContainer mongodb = new GenericContainer("mongo:3.2")
+    private static final GenericContainer mongodb = new GenericContainer("arm64v8/mongo:3.4")
             .withExposedPorts(27017);
 
 

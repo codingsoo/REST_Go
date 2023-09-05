@@ -32,25 +32,25 @@ Given the frequent updates to most of these tools, I recommend visiting their of
 
 We have identified 20 open-source Java-based RESTful services:
 
-1. [Corona-Warn-App Verification Server](https://github.com/corona-warn-app/cwa-verification-server)
-2. [ERC-20 RESTful service](https://github.com/web3labs/erc20-rest-service)
+1. [Corona-Warn-App Verification Server](https://github.com/corona-warn-app/cwa-verification-server): This project has a rate limit (1000 requests per hour).
+2. [ERC-20 RESTful service](https://github.com/web3labs/erc20-rest-service): This project crashes due to an update in the external dependency (web3j). Since this project is no longer maintained, we cannot use it anymore.
 3. [Features Model MicroService](https://github.com/JavierMF/features-service)
 4. [Genome Nexus](https://github.com/genome-nexus/genome-nexus)
 5. [LanguageTool](https://github.com/languagetool-org/languagetool)
 6. [Simple internet-market](https://github.com/aleksey-lukyanets/market)
 7. [NCS](https://github.com/EMResearch/EMB/tree/master/jdk_8_maven/cs/rest/artificial/ncs)
 8. [News](https://github.com/arcuri82/testing_security_development_enterprise_systems)
-9. [OCVN](https://github.com/devgateway/ocvn)
+9. [OCVN](https://github.com/devgateway/ocvn): Currently, we are having an authentication issue for some operations.
 10. [Person Controller](https://github.com/MaBeuLux88/java-spring-boot-mongodb-starter)
-11. [Problem & Project Controller](https://github.com/phantasmicmeans/spring-boot-restful-api-example)
+11. [Problem & Project Controller](https://github.com/phantasmicmeans/spring-boot-restful-api-example): Functional Issue - Cannot obtain code resource
 12. [Project Tracking System](https://github.com/SelimHorri/project-tracking-system-backend-app)
-13. [proxyprint-kitchen](https://github.com/ProxyPrint/proxyprint-kitchen)
+13. [proxyprint-kitchen](https://github.com/ProxyPrint/proxyprint-kitchen): Currently, we are having an authentication issue for some operations.
 14. RESTful web service study: This service is no longer accessible.
 15. [REST Countries](https://github.com/apilayer/restcountries)
 16. [SCS](https://github.com/EMResearch/EMB/tree/master/jdk_8_maven/cs/rest/artificial/scs)
 17. Scout API: This service is no longer accessible.
-18. [Spring Boot Actuator](https://github.com/callicoder/spring-boot-actuator-demo)
-19. [Spring Batch REST](https://github.com/chrisgleissner/spring-batch-rest)
+18. [Spring Boot Actuator](https://github.com/callicoder/spring-boot-actuator-demo): Currently, we are facing a broken dependency issue.
+19. [Spring Batch REST](https://github.com/chrisgleissner/spring-batch-rest): Functional Issue - Cannot obtain job resource
 20. [User Management Microservice](https://github.com/andreagiassi/microservice-rbac-user-management)
 
 We've collected all services' source codes in `services` directory and all specifications in `specifications` directory. 
