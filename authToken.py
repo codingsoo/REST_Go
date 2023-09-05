@@ -1,2 +1,2 @@
 def request(flow):
-    flow.request.headers["Authorization"] = "TOKEN HERE"
+    flow.request.headers["Authorization"] = "TOKEN_HERE"
