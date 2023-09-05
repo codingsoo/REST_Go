@@ -16,7 +16,7 @@ if __name__ == "__main__":
         session = tool + '_' + services[i]
         cov_session = services[i] + "_cov"
         subprocess.run("tmux new -d -s " + cov_session + " sh get_cov.sh " + str(cov_port), shell=True)
-        subprocess.run("tmux new -d -s " + session + " 'timeout " + time_limit + "h python3 run_tool.py " + tool + ' ' + services[i] + ' ' + str(cov_port) + "'", shell=True)
+        subprocess.run("tmux new -d -s " + session + " 'timeout " + str(time_limit) + "h python3 run_tool.py " + tool + ' ' + services[i] + ' ' + str(cov_port) + "'", shell=True)
 
     time.sleep(300)
     time.sleep(int(time_limit) * 60 * 60)

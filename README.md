@@ -53,7 +53,7 @@ We have identified 20 open-source Java-based RESTful services:
 19. [Spring Batch REST](https://github.com/chrisgleissner/spring-batch-rest)
 20. [User Management Microservice](https://github.com/andreagiassi/microservice-rbac-user-management)
 
-We've collected all source codes in `services` directory. 
+We've collected all services' source codes in `services` directory and all specifications in `specifications` directory. 
 
 #### Measuring Code Coverage
 
