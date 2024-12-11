@@ -24,7 +24,7 @@ We currently have 11 open source REST API testing projects:
 8. [Dredd](https://github.com/apiaryio/dredd): Validates responses based on status codes, headers, and body payloads using sample values from the specification and dummy values
 9. [APIFuzzer](https://github.com/KissPeter/APIFuzzer): Employs fuzzing with random values and mutations
 10. [RestCT](https://github.com/GIST-NJU/RestCT): Combinatorial testing-based approach
-11. Morest: Dynamically updates RESTful-service Property Graph (RPG) to model API and object schema information (source code obtained from authors and placed in the `tools/morest` directory)
+11. [Morest](https://github.com/sumleo/morest): Dynamically updates RESTful-service Property Graph (RPG) to model API and object schema information.
 
 Given the frequent updates to most of these tools, I recommend visiting their official websites for the latest installation instructions.
 
